@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
