@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProjectController extends Controller
 {
@@ -16,6 +16,6 @@ class ProjectController extends Controller
     function show(int $projectId)
     {
         $project = Project::find($projectId);
-        return view('projects.show', compact('project'));
+        return view('projects.show', compact(['project']));
     }
 }

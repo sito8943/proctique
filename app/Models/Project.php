@@ -9,4 +9,10 @@ class Project extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
+
+    // Model relations
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -18,7 +18,8 @@ class ProjectFactory extends Factory
     {
         return [
             'name' => fake()->sentence(8),
-            'description' => fake()->paragraph(5)
+            'description' => fake()->paragraph(5),
+            'author_id' => fake()->numberBetween(0, 9)
         ];
     }
 }
