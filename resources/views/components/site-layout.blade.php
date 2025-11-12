@@ -9,7 +9,7 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-    <header class="bg-red-400 rounded-3xl px-4 py-2 flex items-center justify-between mx-9 my-4 sticky top-2">
+    <header class="bg-red-400/70 backdrop-blur-sm rounded-3xl px-4 py-2 flex items-center justify-between mx-9 my-4 sticky top-2">
         <h1 class="text-xl">
             <a href="/" class="text-white">
                 Proctique
