@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->tinyInteger('stars');
             $table->foreignId('author_id');
             $table->foreignId('project_id');
