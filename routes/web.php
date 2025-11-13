@@ -9,6 +9,8 @@ Route::get('projects', [ProjectController::class, 'index'])->name('projects.inde
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::get('tags', [TagController::class, 'index'])->name('tag.index');
+Route::post('tags', [TagController::class, 'store'])->name('tag.store');
+Route::get('tags/create', [TagController::class, 'create'])->name('tag.create');
 Route::get('tags/{tag}', [TagController::class, 'show'])->name('tag.show');
 
 Route::get('/dashboard', function () {
