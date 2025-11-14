@@ -1,4 +1,4 @@
-<x-site-layout title="{{ $tag->name }}">
+<x-site-layout title="{{ $tag->name }}" :showSidebar="false">
     <div class="flex flex-col gap-4 items-start justify-start">
         <ul class="flex gap-4 items-center justify-start">
             @foreach ($tag->projects as $project)
