@@ -33,9 +33,9 @@ class TagController extends Controller
     public function store(Request $request)
     {
         Tag::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'color' => $request->color,
         ]);
-
         return $this->index();
     }
 
@@ -46,6 +46,7 @@ class TagController extends Controller
 
         $tag->update([
             'name' => $request->name,
+            'color' => $request->color,
         ]);
 
         return $this->index();

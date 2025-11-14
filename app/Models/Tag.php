@@ -11,7 +11,8 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'color'
     ];
 
     // Model relations
