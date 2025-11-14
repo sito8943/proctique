@@ -21,8 +21,8 @@ class ReviewFactory extends Factory
         return [
             'comment' => fake()->sentence(1),
             'stars' => fake()->numberBetween(1, 5),
-            'author_id' => fake()->numberBetween(0, 9),
-            'project_id' => fake()->numberBetween(0, 9),
+            'author_id' => fake()->numberBetween(1, 9),
+            'project_id' => fake()->numberBetween(1, 9),
         ];
     }
 }

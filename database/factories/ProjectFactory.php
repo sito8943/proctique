@@ -22,7 +22,7 @@ class ProjectFactory extends Factory
             'leading' => fake()->paragraph(4),
             'description' => fake()->paragraph(20),
             'is_published' => fake()->boolean(80),
-            'author_id' => fake()->numberBetween(0, 9),
+            'author_id' => fake()->numberBetween(1, 9),
         ];
     }
 }
