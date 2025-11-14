@@ -3,19 +3,14 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminTagController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
-Route::get('tags', [TagController::class, 'index'])->name('tag.index');
-Route::post('tags', [TagController::class, 'store'])->name('tag.store');
-Route::get('tags/create', [TagController::class, 'create'])->name('tag.create');
-Route::get('tags/{tag}/edit', [TagController::class, 'edit'])->name('tag.edit');
-Route::put('tags/{tag}', [TagController::class, 'update'])->name('tag.update');
-Route::get('tags/{tag}', [TagController::class, 'show'])->name('tag.show');
-Route::delete('tags/{id}/destroy', [TagController::class, 'destroy'])->name('tag.destroy');
-
+Route::resource('tags', TagController::class)->only(['index', 'show']);
+Route::resource('admin/tags', AdminTagController::class);
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
