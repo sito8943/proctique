@@ -6,15 +6,7 @@
                 {{ $project->author->name }}
             </a>
         </p>
-        <ul class="flex gap-4 items-center justify-start">
-            @foreach ($project->tags as $tag)
-                <li>
-                    <a href="/tags/{{ $tag->id }}" class="px-4 py-2 text-xs bg-gray-200 hover:bg-red-400 hover:text-white rounded-full">
-                        {{ $tag->name }}
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+        <x-tags-layout :tags="$project->tags"></x-tags-layout>
         <p>
             {{ $project->description }}
         </p>

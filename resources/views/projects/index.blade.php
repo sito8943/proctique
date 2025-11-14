@@ -1,15 +1,18 @@
 <x-site-layout title='Projects'>
-    <ul class="grid grid-cols-3 grid-rows-1 gap-4">
+    <ul class="grid gap-10">
         @foreach ($projects as $project)
             <li class="h-full">
-                <a href="/projects/{{ $project->id }}" class="bg-gray-200 rounded-lg h-full p-4 flex flex-col gap-2">
-                    <h3 class="font-bold text-xl">
-                        {{ $project->name }}
-                    </h3>
+                <article class="h-full w-full flex flex-col gap-4">
+                    <a href="/projects/{{ $project->id }}" class="transition">
+                        <h3 class="font-bold text-6xl">
+                            {{ $project->name }}
+                        </h3>
+                    </a>
+                    <x-tags-layout :tags="$project->tags"></x-tags-layout>
                     <p>
-                        {{ $project->description }}
+                        {{ $project->leading }}
                     </p>
-                </a>
+                </article>
             </li>
         @endforeach
     </ul>
