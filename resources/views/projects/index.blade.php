@@ -2,17 +2,18 @@
     <ul class="grid gap-10">
         @foreach ($projects as $project)
             <li class="h-full">
-                <article class="h-full w-full flex flex-col gap-6 bg-slate-100 p-10 rounded-lg">
-                    <a href="/projects/{{ $project->id }}" class="flex flex-col gap-6">
+                <article
+                    class="h-full w-full flex flex-col gap-4 sm:gap-5 bg-slate-100 p-4 sm:p-6 lg:p-8 rounded-lg hover:shadow-md transition-shadow">
+                    <a href="/projects/{{ $project->id }}" class="flex flex-col gap-3 sm:gap-4">
                         <img src="{{ $project->header_image }}" alt="{{ $project->name }}"
-                            class="aspect-video w-full h-80 object-cover rounded-lg">
-                        <h3 class="font-bold text-6xl">
+                            class="aspect-video w-full object-cover rounded-lg">
+                        <h3 class="font-bold text-2xl sm:text-3xl lg:text-4xl">
                             {{ $project->name }}
                         </h3>
                     </a>
                     <x-author-layout :date="$project->published_at" :author="$project->author"></x-author-layout>
                     <x-tags-layout :tags="$project->tags"></x-tags-layout>
-                    <p>
+                    <p class="text-sm sm:text-base">
                         {{ $project->leading }}
                     </p>
                 </article>
