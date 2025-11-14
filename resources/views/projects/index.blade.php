@@ -8,6 +8,10 @@
                             {{ $project->name }}
                         </h3>
                     </a>
+                    <div class="flex flex-col gap-1">
+                        <x-author-layout :author="$project->author"></x-author-layout>
+                        <p class="text-xs"> {{ \Carbon\Carbon::parse($project->published_at)->format('F j') }}</p>
+                    </div>
                     <x-tags-layout :tags="$project->tags"></x-tags-layout>
                     <p>
                         {{ $project->leading }}

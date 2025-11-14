@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->foreignId('author_id');
             $table->boolean("is_published")->default(false);
+            $table->dateTime("published_at")->nullable();
             $table->timestamps();
         });
     }
