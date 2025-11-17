@@ -11,8 +11,8 @@
                             {{ $project->name }}
                         </h3>
                     </a>
-                    <x-author-layout :date="$project->published_at" :author="$project->author"></x-author-layout>
-                    <x-tags-layout :tags="$project->tags"></x-tags-layout>
+                    <x-author :date="$project->published_at" :author="$project->author"></x-author>
+                    <x-tags :tags="$project->tags"></x-tags>
                     <p class="text-sm sm:text-base">
                         {{ $project->leading }}
                     </p>

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TagsLayout extends Component
+class Tags extends Component
 {
     public iterable $tags = [];
 
@@ -23,6 +23,6 @@ class TagsLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tags-layout');
+        return view('components.tags');
     }
 }

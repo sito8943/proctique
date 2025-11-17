@@ -3,8 +3,8 @@
         <img src="{{ $project->header_image }}" alt="{{ $project->name }}"
             class="aspect-video w-full h-80 object-cover rounded-lg">
         <h3 class="font-bold text-2xl sm:text-3xl lg:text-4xl">{{ $project->name }}</h3>
-        <x-author-layout :author="$project->author" :date="$project->published_at"></x-author-layout>
-        <x-tags-layout :tags="$project->tags"></x-tags-layout>
+        <x-author :author="$project->author" :date="$project->published_at"></x-author>
+        <x-tags :tags="$project->tags"></x-tags>
         <p class="text-sm sm:text-base">
             {{ $project->description }}
         </p>

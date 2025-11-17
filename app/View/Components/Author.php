@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\User;
 
-class AuthorLayout extends Component
+class Author extends Component
 {
     public bool $showLabel = true;
     public string $date = "";
@@ -28,6 +28,6 @@ class AuthorLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.author-layout');
+        return view('components.author');
     }
 }
