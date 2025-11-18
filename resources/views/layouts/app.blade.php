@@ -39,7 +39,7 @@
                     {{ __($title) }}
                 </h2>
                 @if ($action && $button)
-                    <a :href="$action"
+                    <a href="{{ $action }}"
                         class="rounded-3xl px-4 py-2 bg-red-400 text-white hover:bg-red-300">{{ $button }}</a>
                 @endif
             </div>
