@@ -1,8 +1,8 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "ndeblauw/starterpack",
+    "name": "sito8943/proctique",
     "type": "project",
-    "description": "Educational skeleton application for the Laravel framework.",
+    "description": "Free project discover platform for everyone",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
