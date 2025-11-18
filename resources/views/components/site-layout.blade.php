@@ -23,22 +23,12 @@
         @endif
 
         <main class="flex-1 w-full">
-            <div class="flex flex-wrap items-center gap-2 mb-4">
-                @if ($title !== 'Proctique')
-                    <button type="button" onclick="history.go(-1)"
-                        class="rounded-full hover:bg-red-400/40 p-2 transition hover:text-white">
-                        <x-fas-chevron-left class="w-4 h-4" />
-                    </button>
-                @endif
-                <h2 class="text-2xl md:text-3xl font-bold">{{ $title }}</h2>
-
-                @if ($showSidebar)
-                    <button type="button" id="toggle-sidebar"
-                        class="md:hidden ml-auto rounded-xl px-3 py-1.5 text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50">
-                        Filters
-                    </button>
-                @endif
-            </div>
+            @if ($showSidebar)
+                <button type="button" id="toggle-sidebar"
+                    class="md:hidden ml-auto rounded-xl px-3 py-1.5 text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50">
+                    Filters
+                </button>
+            @endif
 
             @if ($showSidebar)
                 <!-- Mobile inline sidebar panel -->
