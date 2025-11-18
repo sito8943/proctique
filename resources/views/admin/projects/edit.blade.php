@@ -6,10 +6,10 @@
         <x-text-input name="header_image" id="header_image" label="Header Image URL" :value="old('header_image', $project->header_image)" placeholder="https://..." />
 
         <x-text-area-input name="leading" id="leading" label="Leading" :value="old('leading', $project->leading)"
-            placeholder="Short intro" value=""/>
+            placeholder="Short intro" />
 
         <x-text-area-input name="content" id="content" label="Content" :value="old('content', $project->content)"
-            placeholder="Longer content" :rows="10" :value="old('content', $project->content)" />
+            placeholder="Longer content" :rows="10" />
 
         <div class="flex gap-4 items-center justify-start">
             <label for="author_id">Author</label>
@@ -30,7 +30,8 @@
             <div class="flex items-center gap-2">
                 <label for="published_at">Published at</label>
                 <input id="published_at" name="published_at" type="datetime-local"
-                    class="border-2 border-gray-200 rounded-3xl px-4 py-1" value="{{ old('published_at') }}" />
+                    class="border-2 border-gray-200 rounded-3xl px-4 py-1"
+                    value="{{ old('published_at', $project->published_at) }}" />
             </div>
         </div>
     </x-form-layout>
