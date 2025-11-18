@@ -10,6 +10,21 @@ class Project extends Model
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'name',
+        'header_image',
+        'leading',
+        'content',
+        'author_id',
+        'is_published',
+        'published_at',
+    ];
+
     // Model relations
     public function author()
     {
@@ -24,5 +39,22 @@ class Project extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function canBeManagedBy(User $user)
+    {
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->id === $this->author_id) {
+            return true;
+        }
+
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return false;
     }
 }
