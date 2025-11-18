@@ -1,4 +1,4 @@
-<x-site-layout title="Create a new tag">
+<x-app-layout title="Create a new tag">
     <x-form-layout method="POST" action="/tags">
         <x-text-input name="name" id="name" label="Name" :value="old('name', '')"
             placeholder="Ex: Coding tool"></x-text-input>
@@ -8,4 +8,4 @@
                 placeholder="Ex: #ddffdd" />
         </div>
     </x-form-layout>
-</x-site-layout>
+</x-app-layout>

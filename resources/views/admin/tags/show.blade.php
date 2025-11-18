@@ -1,4 +1,4 @@
-<x-site-layout title="{{ $tag->name }}">
+<x-app-layout title="{{ $tag->name }}">
     <div class="flex flex-col gap-4 items-start justify-start">
         <ul class="flex gap-4 items-center justify-start">
             @foreach ($tag->projects as $project)
@@ -11,4 +11,4 @@
             @endforeach
         </ul>
     </div>
-</x-site-layout>
+</x-app-layout>

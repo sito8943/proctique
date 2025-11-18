@@ -1,4 +1,4 @@
-<x-site-layout title="Edit tag with Id: {{ $tag->id }}">
+<x-app-layout title="Edit tag with Id: {{ $tag->id }}">
     <x-form-layout method="PUT" action="/tags/{{ $tag->id }}">
         <x-text-input name="name" id="name" label="Name" :value="old('name', $tag->name)"
             placeholder="Ex: Coding tool"></x-text-input>
@@ -8,4 +8,4 @@
                 placeholder="Ex: #ddffdd" value="{{ $tag->color }}" />
         </div>
     </x-form-layout>
-</x-site-layout>
+</x-app-layout>
