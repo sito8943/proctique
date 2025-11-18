@@ -1,9 +1,9 @@
-<x-site-layout title='Projects'>
+<x-site-layout :showSidebar="true" title="Proctique Discovery">
     <ul class="grid gap-10">
         @foreach ($projects as $project)
             <li class="h-full">
                 <article
-                    class="h-full w-full flex flex-col gap-4 sm:gap-5 bg-slate-100 p-4 sm:p-6 lg:p-8 rounded-lg hover:shadow-md transition-shadow">
+                    class="h-full w-full flex flex-col gap-4 sm:gap-5 border border-slate-100 shadow-sm p-4 sm:p-6 lg:p-8 rounded-lg transition-shadow">
                     <a href="/projects/{{ $project->id }}" class="flex flex-col gap-3 sm:gap-4">
                         <img src="{{ $project->header_image }}" alt="{{ $project->name }}"
                             class="aspect-video w-full object-cover rounded-lg">
