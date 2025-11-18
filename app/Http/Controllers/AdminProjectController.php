@@ -28,6 +28,7 @@ class AdminProjectController extends Controller
             'author_id' => ['required', 'integer'],
             "header_image" => [],
             "leading" => [],
+            'content' => [],
             "is_published" => [],
             "published_at" => []
         ]);
@@ -51,6 +52,7 @@ class AdminProjectController extends Controller
             'author_id' => ['required', 'integer'],
             "header_image" => [],
             "leading" => [],
+            'content' => [],
             "is_published" => [],
             "published_at" => []
         ]);
