@@ -21,7 +21,7 @@
                 </li>
                 @if (auth()->user() != null)
                     <li>
-                        <a href="/profile"> <img class="w-10 h-10 rounded-full" src="{{ auth()->user()->avatar }}"
+                        <a href="/profile"> <img class="w-8 h-8 bg-gray-50 rounded-full" src="{{ auth()->user()->avatar }}"
                                 alt="{{ auth()->user()->name }}" /></a>
                     </li>
                 @else
