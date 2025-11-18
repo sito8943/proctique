@@ -1,4 +1,4 @@
-<x-site-layout title='Project Tags' :showSidebar="false">
+<x-site-layout title='Project Tags'>
     <ul class="grid grid-cols-3 grid-rows-1 gap-4">
         @foreach ($tags as $tag)
             <li class="h-full">
