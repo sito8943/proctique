@@ -19,6 +19,9 @@
                         <x-breeze.nav-link href="/admin/tags" :active="str_contains(request()->route()->uri, 'admin/tags')">
                             {{ __('Tags') }}
                         </x-breeze.nav-link>
+                        <x-breeze.nav-link href="/admin/projects" :active="str_contains(request()->route()->uri, 'admin/projects')">
+                            {{ __('Projects') }}
+                        </x-breeze.nav-link>
                     @endif
                 </nav>
             </div>

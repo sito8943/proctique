@@ -4,6 +4,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminTagController;
+use App\Http\Controllers\AdminProjectController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -17,6 +18,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('admin/tags', AdminTagController::class)->except(['show']);
+    Route::resource('admin/projects', AdminProjectController::class)->except(['show']);
 
     Route::get('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'update'])->name('profile.update');
