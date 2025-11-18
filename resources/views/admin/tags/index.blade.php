@@ -1,5 +1,5 @@
 <x-app-layout title='Project Tags' action="/admin/tags/create" button="New Tag">
-    <ul class="grid grid-cols-3 grid-rows-1 gap-4">
+    <ul class="flex flex-wrap gap-4">
         @foreach ($tags as $tag)
             <li class="h-full">
                 <div class="bg-gray-200 transition rounded-lg h-full p-4 flex items-center justify-between gap-2">
