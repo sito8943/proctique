@@ -10,7 +10,7 @@
                         <a href="/admin/tags/{{ $tag->id }}/edit" class="hover:text-red-400">
                             <x-fas-edit class="w-4 h-4" />
                         </a>
-                        <form method="POST" action="/admin/tags/{{ $tag->id }}/destroy" class="flex">
+                        <form method="POST" action="/admin/tags/{{ $tag->id }}" class="flex">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="hover:text-red-400 cursor-pointer">
