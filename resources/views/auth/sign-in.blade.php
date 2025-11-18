@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-breeze.auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('sign-in') }}">
         @csrf
 
         <!-- Email Address -->
