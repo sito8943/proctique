@@ -2,19 +2,8 @@
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($projects as $project)
             <li class="h-full">
-                <div class="bg-gray-200 transition rounded-lg h-full p-4 flex items-start justify-between gap-2">
-                    <div>
-                        <h3 class="font-bold text-lg">{{ $project->name }}</h3>
-                        <p class="text-sm text-gray-600">by {{ $project->author->name }}</p>
-
-                        <div class="flex flex-col gap-1 mt-2">
-                            <h4>
-                                Tags
-                            </h4>
-                            <x-tags :tags="$project->tags" />
-                        </div>
-                    </div>
-                    <ul class="flex gap-4 items-center justify-end">
+                <div class="bg-gray-200 transition rounded-lg h-full p-4 flex flex-col items-start justify-between gap-2">
+                    <ul class="flex gap-4 items-center justify-end w-full">
                         <a href="/admin/projects/{{ $project->id }}/toggle-is-published" class="hover:text-red-400"
                             title="@if ($project->is_published) 'Unpublish' @else 'Publish' @endif">
                             @if ($project->is_published)
@@ -34,6 +23,18 @@
                             </button>
                         </form>
                     </ul>
+                    <div class="flex flex-col items-start justify-start h-full w-full">
+                        <h3 class="font-bold text-lg">{{ $project->name }}</h3>
+                        <p class="text-sm text-gray-600">by {{ $project->author->name }}</p>
+
+                        <div class="flex flex-col gap-1 mt-2">
+                            <h4>
+                                Tags
+                            </h4>
+                            <x-tags :tags="$project->tags" />
+                        </div>
+                    </div>
+
                 </div>
             </li>
         @endforeach
