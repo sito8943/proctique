@@ -10,14 +10,16 @@ class FormLayout extends Component
 {
     public string $action;
     public string $method;
+    public string $enctype;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $action, string $method)
+    public function __construct(string $action, string $method, string $enctype = "")
     {
         $this->action = $action;
         $this->method = $method;
+        $this->enctype = $enctype;
     }
 
     /**

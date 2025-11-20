@@ -1,9 +1,8 @@
 <x-app-layout title="Create a new project">
-    <x-form-layout method="POST" action="/admin/projects">
-        <x-text-input name="name" id="name" label="Name" :value="old('name', '')" placeholder="Ex: Awesome Tool" />
+    <x-form-layout method="POST" action="/admin/projects" enctype="multipart/form-data">
+        <input type="file" name="header_image" />
 
-        <x-text-input name="header_image" id="header_image" label="Header Image URL" :value="old('header_image', '')"
-            placeholder="https://..." />
+        <x-text-input name="name" id="name" label="Name" :value="old('name', '')" placeholder="Ex: Awesome Tool" />
 
         <x-text-area-input name="leading" id="leading" label="Leading" :value="old('leading', '')"
             placeholder="Short intro" />

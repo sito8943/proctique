@@ -17,7 +17,7 @@ class Project extends Model
      */
     protected $fillable = [
         'name',
-        'header_image',
+        'header_image_path',
         'leading',
         'content',
         'author_id',

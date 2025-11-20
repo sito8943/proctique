@@ -1,9 +1,11 @@
 <x-app-layout title='Edit project with Id: {{ $project->id }}'>
     <x-form-layout method="PUT" action="/admin/projects/{{ $project->id }}">
+        <input type="file" name="header_image" />
+
+        <img src="/{{ $project->header_image_path }}" />
+
         <x-text-input name="name" id="name" label="Name" :value="old('name', $project->name)"
             placeholder="Ex: Awesome Tool" />
-
-        <x-text-input name="header_image" id="header_image" label="Header Image URL" :value="old('header_image', $project->header_image)" placeholder="https://..." />
 
         <x-text-area-input name="leading" id="leading" label="Leading" :value="old('leading', $project->leading)"
             placeholder="Short intro" />

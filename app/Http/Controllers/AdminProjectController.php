@@ -26,14 +26,19 @@ class AdminProjectController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'author_id' => ['required', 'integer'],
-            "header_image" => [],
-            "leading" => [],
-            'content' => [],
-            "is_published" => [],
-            "published_at" => []
+            "header_image" => ['nullable', 'image'],
+            "leading" => ['nullable', 'string'],
+            'content' => ['nullable', 'string']
         ]);
 
-        Project::create($validated);
+        if (
+            $request->hasFile('header_image')
+        ) {
+            $path = $request->file('header_image')->store('projects', 'public');
+            unset($validated['header_image']);
+        }
+
+        Project::create($validated + ['header_image_path' => $path]);
 
         return redirect('/admin/projects');
     }
@@ -50,11 +55,11 @@ class AdminProjectController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'author_id' => ['required', 'integer'],
-            "header_image" => [],
-            "leading" => [],
-            'content' => [],
-            "is_published" => [],
-            "published_at" => []
+            "header_image" => ['nullable', 'image'],
+            "leading" => ['nullable', 'string'],
+            'content' => ['nullable', 'string'],
+            "is_published" => ['nullable', 'boolean'],
+            "published_at" => ['nullable']
         ]);
 
         $project = Project::find($id);
