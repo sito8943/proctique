@@ -3,7 +3,7 @@
         @foreach ($tags as $tag)
             <li>
                 <a href="/tags/{{ $tag->id }}" style="--tag-color: {{ $tag->color }};"
-                    class="group inline-flex items-center rounded px-2 py-1 text-xs border border-gray-200 transition-colors hover:bg-[var(--tag-color)]/20 hover:border-[var(--tag-color)] hover:text-[var(--tag-color)]">
+                    class="group inline-flex items-center rounded px-2 py-1 text-xs border border-gray-300 transition-colors hover:bg-[var(--tag-color)]/20 hover:border-[var(--tag-color)] hover:text-[var(--tag-color)]">
                     <span class="text-[var(--tag-color)] mr-1">#</span>{{ $tag->name }}
                 </a>
             </li>
