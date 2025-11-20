@@ -1,5 +1,5 @@
 <x-app-layout title="Create a new project">
-    <x-form-layout method="POST" action="/admin/projects" enctype="multipart/form-data"
+    <x-form method="POST" action="/admin/projects" enctype="multipart/form-data"
         contentClass="flex flex-col md:flex-row gap-6 md:gap-10">
         <div class="flex flex-col gap-6 md:gap-10 w-full md:w-1/2">
             <x-text-input required name="name" id="name" label="Name" :value="old('name', '')" placeholder="Ex: Awesome Tool" />
@@ -47,5 +47,5 @@
                 });
             </script>
         </div>
-    </x-form-layout>
+    </x-form>
 </x-app-layout>

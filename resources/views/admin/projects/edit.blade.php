@@ -1,5 +1,5 @@
 <x-app-layout title='Edit project with Id: {{ $project->id }}'>
-    <x-form-layout method="PUT" action="/admin/projects/{{ $project->id }}" enctype="multipart/form-data"
+    <x-form method="PUT" action="/admin/projects/{{ $project->id }}" enctype="multipart/form-data"
         contentClass="flex flex-col md:flex-row gap-6 md:gap-10">
         <div class="flex flex-col gap-6 md:gap-10 w-full md:w-1/2">
             <x-text-input name="name" id="name" label="Name" :value="old('name', $project->name)"
@@ -65,5 +65,5 @@
                 });
             </script>
         </div>
-    </x-form-layout>
+    </x-form>
 </x-app-layout>
