@@ -64,15 +64,16 @@ class AdminProjectController extends Controller
             "published_at" => ['nullable']
         ]);
 
+        $project = Project::find($id);
+
         if (
             $request->hasFile('header_image')
         ) {
-            $path = $request->file('header_image')->store('projects', 'public');
+            $project->media->each->delete();
+            $project->addMediaFromRequest('header_image')->toMediaCollection();
             unset($validated['header_image']);
         }
-
-        $project = Project::find($id);
-        $project->update($validated + ['header_image_path' => $path]);
+        $project->update($validated);
 
         return redirect('/admin/projects');
     }

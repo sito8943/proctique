@@ -41,17 +41,21 @@
                 </span>
 
                 <input class="invisible" id="header_image" type="file" name="header_image" />
+                @error('photo')
+                    <p class="text-red-400">{{ $message }}</p>
+                @enderror
 
-                @if ($project->header_image_path)
-                    <img class="object-cover w-full max-h-96 rounded-lg border border-gray-200 mt-2"
-                        id="header_image_preview" name="header_image_preview" src="/{{ $project->header_image_path }}" />
-                @endif
+                <img class="object-cover w-full max-h-96 rounded-lg border border-gray-200 mt-2 @if (!$project->media->first())
+                    invisible
+                @endif"
+                    id="header_image_preview" name="header_image_preview" src="{{ $project->media->first() ? $project->media->first()->getUrl() : "" }}" />
             </label>
 
             <script>
                 document.getElementById('header_image').addEventListener('change', function (event) {
                     const preview = document.getElementById('header_image_preview');
                     const file = event.target.files[0];
+                    preview.classList.remove('invisible')
 
                     if (file) {
                         preview.src = URL.createObjectURL(file);

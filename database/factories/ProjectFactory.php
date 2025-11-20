@@ -20,7 +20,6 @@ class ProjectFactory extends Factory
         return [
             'name' => fake()->sentence(5),
             'leading' => fake()->paragraph(4),
-            'header_image_path' => "https://picsum.photos/1000/1000",
             'content' => fake()->paragraph(20),
             'published_at' => fake()->dateTime(),
             'is_published' => fake()->boolean(80),
