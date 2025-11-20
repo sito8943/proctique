@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'avatar' => "https://avatar.iran.liara.run/public/" . fake()->numberBetween(1, 30)
+            'avatar_path' => "https://avatar.iran.liara.run/public/" . fake()->numberBetween(1, 30)
         ]);
 
         event(new Registered($user));
