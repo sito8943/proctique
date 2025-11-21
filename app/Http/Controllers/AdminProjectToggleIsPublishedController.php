@@ -14,6 +14,9 @@ class AdminProjectToggleIsPublishedController extends Controller
             'is_published' => !$project->is_published,
         ]);
 
+        // TODO add logic to send publish email here
+
+
         return redirect()->back();
     }
 }

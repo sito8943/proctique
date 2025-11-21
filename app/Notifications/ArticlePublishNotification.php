@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use App\Models\Project;
+
+class ArticlePublishNotification extends Notification
+{
+    use Queueable;
+
+    /**
+     * Create a new notification instance.
+     */
+    public function __construct(public Project $project, public User $publisher)
+    {
+        //
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @return array<int, string>
+     */
+    public function via(object $notifiable): array
+    {
+        return ['mail'];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     */
+    public function toMail(object $notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject('A new Project has been publish!')
+            ->greeting('Hi!')
+            ->line('<strong>'.$this->project->name.'</strong> has been publish by <a href="http://authors/'.$this->publisher->id.'>'.$this->publisher->name.'</a>!')
+            ->action("It's reading time!", url('http://projects/'.$this->project->id.''))
+            ->line('Thanks to be part of the Proctique Community!');
+    }
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(object $notifiable): array
+    {
+        return [
+            //
+        ];
+    }
+}
