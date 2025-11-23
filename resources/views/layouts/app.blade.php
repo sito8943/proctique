@@ -38,7 +38,7 @@
 
         <!-- Page Content -->
         <main
-            class="flex flex-col items-start justify-start gap-5 h-full flex-1 mx-auto w-full max-w-screen-xl px-4 pb-6">
+            class="flex flex-col gap-5 h-full flex-1 mx-auto w-full max-w-screen-xl px-4 pb-6">
 
             <div name="header" class="bg-gray-100 w-full flex items-center justify-between py-4 sticky top-16">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
