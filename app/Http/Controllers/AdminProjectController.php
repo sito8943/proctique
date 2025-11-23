@@ -66,6 +66,11 @@ class AdminProjectController extends Controller
 
         $project = Project::find($id);
 
+        $removeHeader = $request->boolean('header_image_remove');
+        if ($removeHeader) {
+            $project->media->each->delete();
+        }
+
         if (
             $request->hasFile('header_image')
         ) {
@@ -86,4 +91,3 @@ class AdminProjectController extends Controller
         return redirect('/admin/projects');
     }
 }
-

@@ -71,9 +71,15 @@ class AdminUserController extends Controller
             $user->is_admin = $request->boolean('is_admin');
         }
 
+        $removeAvatar = $request->boolean('avatar_remove');
+        if ($removeAvatar) {
+            $user->media->each->delete();
+        }
+
         if (
             $request->hasFile('avatar')
         ) {
+            // if there is an existing avatar, replace it
             $user->media->each->delete();
             $user->addMediaFromRequest('avatar')->toMediaCollection();
             unset($validated['avatar']);
