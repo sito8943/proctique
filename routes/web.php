@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminProjectToggleIsPublishedController;
+use App\Http\Controllers\AdminUserController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -20,6 +21,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('admin/tags', AdminTagController::class)->except(['show'])->middleware('is_admin');
     Route::resource('admin/projects', AdminProjectController::class)->except(['show']);
+    Route::resource('admin/users', AdminUserController::class)->middleware('is_admin')->except(['show']);
 
     Route::get('admin/projects/{project}/toggle-is-published', [AdminProjectToggleIsPublishedController::class, 'toggleIsPublished'])->name('project.toggleIsPublished');
 
