@@ -8,16 +8,14 @@ use Illuminate\View\Component;
 
 class AdminSiteLayout extends Component
 {
-    public string $title;
-    public bool $showSidebar;
+    
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $title = 'Proctique', bool $showSidebar = true)
+    public function __construct(public string $title = 'Proctique', public bool $showSidebar = true)
     {
-        $this->title = $title;
-        $this->showSidebar = $showSidebar;
+        
     }
 
     /**

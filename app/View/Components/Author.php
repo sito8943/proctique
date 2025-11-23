@@ -9,18 +9,14 @@ use App\Models\User;
 
 class Author extends Component
 {
-    public bool $showLabel = true;
-    public string $date = "";
-    public User $author;
+    
 
     /**
      * Create a new component instance.
      */
-    public function __construct(User $author, string $date, bool $showLabel = true)
+    public function __construct(public User $author, public string $date, public bool $showLabel = true)
     {
-        $this->author = $author;
-        $this->date = $date;
-        $this->showLabel = $showLabel;
+        
     }
 
     /**

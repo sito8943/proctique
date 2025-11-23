@@ -8,22 +8,14 @@ use Illuminate\View\Component;
 
 class ColorInput extends Component
 {
-    public string $name;
-    public string $label;
-    public string $value = "";
-    public string $placeholder = "";
-    public string $id = "";
+    
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label = "Color", string $id = "", string $placeholder = "", string $value = "")
+    public function __construct(public string $name, public string $label = "Color", public string $id = "", public string $placeholder = "", public string $value = "")
     {
-        $this->name = $name;
-        $this->label = $label;
-        $this->value = $value;
-        $this->placeholder = $placeholder;
-        $this->id = $id;
+        
     }
 
     /**

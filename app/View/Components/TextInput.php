@@ -8,24 +8,14 @@ use Illuminate\View\Component;
 
 class TextInput extends Component
 {
-    public string $name;
-    public string $label;
-    public string $value = "";
-    public string $placeholder = "";
-    public string $id = "";
-    public bool $required;
+    
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label, string $id = "", string $placeholder = "", string $value = "", bool $required = false)
+    public function __construct(public string $name, public string $label, public string $id = "", public string $placeholder = "", public string $value = "", public bool $required = false)
     {
-        $this->name = $name;
-        $this->label = $label;
-        $this->value = $value;
-        $this->placeholder = $placeholder;
-        $this->id = $id;
-        $this->required = $required;
+        
     }
 
     /**

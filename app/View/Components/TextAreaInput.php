@@ -8,25 +8,14 @@ use Illuminate\View\Component;
 
 class TextAreaInput extends Component
 {
-    public string $name;
-    public string $label;
-    public string $value = "";
-    public string $placeholder = "";
-    public string $id = "";
-
-    public string $rows = "";
+    
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label, string $id = "", string $rows = "2", string $placeholder = "", string $value = "")
+    public function __construct(public string $name, public string $label, public string $id = "", public string $rows = "2", public string $placeholder = "", public string $value = "")
     {
-        $this->name = $name;
-        $this->label = $label;
-        $this->value = $value;
-        $this->placeholder = $placeholder;
-        $this->id = $id;
-        $this->rows = $rows;
+        
     }
 
     /**

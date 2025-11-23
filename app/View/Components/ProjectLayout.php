@@ -8,14 +8,14 @@ use Illuminate\View\Component;
 
 class ProjectLayout extends Component
 {
-    public string $title;
+    
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $title = 'Proctique')
+    public function __construct(public string $title = 'Proctique')
     {
-        $this->title = $title;
+        
     }
 
     /**
