@@ -2,7 +2,7 @@
     <x-form method="POST" action="/admin/projects" enctype="multipart/form-data"
         contentClass="flex flex-col md:flex-row gap-6 md:gap-10">
         <div class="flex flex-col gap-6 md:gap-10 w-full md:w-1/2">
-            <x-text-input required name="name" id="name" label="Name" :value="old('name', '')" placeholder="Ex: Awesome Tool" />
+            <x-text-input required="true" name="name" id="name" label="Name" :value="old('name', '')" placeholder="Ex: Awesome Tool" />
 
             <x-text-area-input name="leading" id="leading" label="Leading" :value="old('leading', '')"
                 placeholder="Short intro" />
