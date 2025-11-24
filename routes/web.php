@@ -13,6 +13,7 @@ Route::get('/', WelcomeController::class);
 // Projects (public)
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::post('projects/{project}/reviews', [ReviewController::class, 'store'])->name('projects.reviews.store');
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
@@ -32,5 +33,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-// Reviews (public create)
-Route::post('projects/{project}/reviews', [ReviewController::class, 'store'])->name('projects.reviews.store');
