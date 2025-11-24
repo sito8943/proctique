@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminProjectToggleIsPublishedController;
 use App\Http\Controllers\AdminUserController;
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', WelcomeController::class);
 
 // Projects (public)
 Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
