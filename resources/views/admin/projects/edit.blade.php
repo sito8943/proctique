@@ -11,8 +11,10 @@
             <x-text-area-input name="content" id="content" label="Content" :value="old('content', $project->content ?? '')"
                 placeholder="Longer content" :rows="10" />
 
+            <x-tag-input :values="$project->tags->pluck('id')->toArray()" :options="App\Models\Tag::orderBy('name')->pluck('name','id')->toArray()"/>
+
             @if (auth()->user()->is_admin)
-                <div class="flex gap-4 items-center justify-start">
+            <div class="flex gap-4 items-center justify-start">
                     <label for="author_id">Author</label>
                     <select id="author_id" name="author_id" class="border-2 border-gray-200 rounded-3xl px-4 py-1">
                         @foreach ($users as $user)

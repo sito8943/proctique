@@ -79,6 +79,7 @@ class AdminProjectController extends Controller
             "header_image" => ['nullable', 'image'],
             "leading" => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
+            'tags' => ['nullable'],
             "is_published" => ['nullable', 'boolean'],
         ]);
 
@@ -105,6 +106,13 @@ class AdminProjectController extends Controller
 
         if ($authUser && !$authUser->is_admin) {
             $validated['author_id'] = $authUser->id;
+        }
+
+        if ($request->has('tags')) {
+            $project->tags()->sync($validated['tags']);
+            unset($validated['tags']);
+        } else {
+            $project->tags()->sync([]);
         }
 
         $project->update($validated);
