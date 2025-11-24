@@ -37,6 +37,7 @@ class AdminProjectController extends Controller
             'author_id' => ['required', 'integer'],
             "header_image" => ['nullable', 'image'],
             "leading" => ['nullable', 'string'],
+            'tags' => ['nullable'],
             'content' => ['nullable', 'string']
         ]);
 
@@ -52,6 +53,13 @@ class AdminProjectController extends Controller
             $request->hasFile('header_image')
         ) {
             $project->addMediaFromRequest('header_image')->toMediaCollection();
+        }
+
+        if ($request->has('tags')) {
+            $project->tags()->sync($validated['tags']);
+            unset($validated['tags']);
+        } else {
+            $project->tags()->sync([]);
         }
 
         return redirect('/admin/projects');
