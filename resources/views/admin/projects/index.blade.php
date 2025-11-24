@@ -29,6 +29,8 @@
                         </form>
                     </ul>
                     <div class="flex flex-col items-start justify-start h-full w-full">
+                        <x-media-image :model="$project" conversion="website"
+                            class="aspect-video w-full object-cover rounded-lg my-2" />
                         <h3 class="font-bold text-lg">{{ $project->name }}</h3>
                         <p class="text-sm text-gray-600">by {{ $project->author->name }}</p>
 
