@@ -65,7 +65,7 @@ class Project extends Model implements HasMedia
     public function casts()
     {
         return [
-            'is_published' => 'bool'
+            'is_published' => 'boolean'
         ];
     }
 
