@@ -86,49 +86,11 @@
         </section>
 
         @if ($authorProjects->isNotEmpty())
-            <section class="w-full">
-                <h4 class="text-xl font-semibold mb-4">Other projects from {{ $project->author->name }}</h4>
-                <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($authorProjects as $item)
-                        <li class="h-full">
-                            <article class="h-full w-full flex flex-col gap-3 border border-slate-100 shadow-sm p-4 rounded-lg">
-                                <a href="/projects/{{ $item->id }}" class="flex flex-col gap-2">
-                                    <x-media-image :model="$item" conversion="preview"
-                                        class="aspect-video w-full object-cover rounded-md" />
-                                    <h5 class="font-semibold text-lg line-clamp-2">{{ $item->name }}</h5>
-                                    <p class="text-xs"> {{ \Carbon\Carbon::parse($item->date)->format('F j') }}</p>
-                                    <p class="text-xs">
-                                        {{ $item->leading }}
-                                    </p>
-                                </a>
-                            </article>
-                        </li>
-                    @endforeach
-                </ul>
-            </section>
+            <x-project-grid :projects="$authorProjects" :title="'Other projects from ' . $project->author->name" />
         @endif
 
         @if ($tag && $tagProjects->isNotEmpty())
-            <section class="w-full">
-                <h4 class="text-xl font-semibold mb-4">Other projects with the same {{ $tag->name }}</h4>
-                <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($tagProjects as $item)
-                        <li class="h-full">
-                            <article class="h-full w-full flex flex-col gap-3 border border-slate-100 shadow-sm p-4 rounded-lg">
-                                <a href="/projects/{{ $item->id }}" class="flex flex-col gap-2">
-                                    <x-media-image :model="$item" conversion="preview"
-                                        class="aspect-video w-full object-cover rounded-md" />
-                                    <h5 class="font-semibold text-lg line-clamp-2">{{ $item->name }}</h5>
-                                    <p class="text-xs"> {{ \Carbon\Carbon::parse($item->date)->format('F j') }}</p>
-                                    <p class="text-xs">
-                                        {{ $item->leading }}
-                                    </p>
-                                </a>
-                            </article>
-                        </li>
-                    @endforeach
-                </ul>
-            </section>
+            <x-project-grid :projects="$tagProjects" :title="'Other projects with the same ' . $tag->name" />
         @endif
     </div>
 </x-project-layout>
