@@ -18,15 +18,18 @@ class AdminProjectController extends Controller
         }
 
         $projects = $query->paginate(10);
+
         return view('admin.projects.index', compact('projects'));
     }
 
     public function create()
     {
         $authUser = auth()->user();
+
         $users = ($authUser && $authUser->is_admin)
             ? User::all()
             : User::where('id', optional($authUser)->id)->get();
+
         return view('admin.projects.create', compact('users'));
     }
 
@@ -42,6 +45,8 @@ class AdminProjectController extends Controller
         ]);
 
         $authUser = auth()->user();
+
+        // forcing author_id to auth user if is not an admin
         if ($authUser && !$authUser->is_admin) {
             $validated['author_id'] = $authUser->id;
         }
@@ -68,6 +73,7 @@ class AdminProjectController extends Controller
     public function edit(int $id)
     {
         $project = Project::with('author', 'tags', 'media')->find($id);
+
         $authUser = auth()->user();
         if (!$project || !$project->canBeManagedBy($authUser)) {
             abort(403);
@@ -76,6 +82,7 @@ class AdminProjectController extends Controller
         $users = ($authUser && $authUser->is_admin)
             ? User::with('media')->get()
             : User::with('media')->where('id', $authUser->id)->get();
+
         return view('admin.projects.edit', compact(['project', 'users']));
     }
 
@@ -94,6 +101,7 @@ class AdminProjectController extends Controller
         $validated['is_published'] = $request->boolean('is_published');
 
         $project = Project::find($id);
+
         $authUser = auth()->user();
         if (!$project || !$project->canBeManagedBy($authUser)) {
             abort(403);
@@ -112,6 +120,7 @@ class AdminProjectController extends Controller
             unset($validated['header_image']);
         }
 
+        // forcing author_id to auth user if is not an admin
         if ($authUser && !$authUser->is_admin) {
             $validated['author_id'] = $authUser->id;
         }
@@ -131,6 +140,7 @@ class AdminProjectController extends Controller
     public function destroy(int $id)
     {
         $project = Project::findOrFail($id);
+
         $authUser = auth()->user();
         if (!$project->canBeManagedBy($authUser)) {
             abort(403);
