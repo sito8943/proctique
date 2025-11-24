@@ -96,6 +96,10 @@
                                     <x-media-image :model="$item" conversion="preview"
                                         class="aspect-video w-full object-cover rounded-md" />
                                     <h5 class="font-semibold text-lg line-clamp-2">{{ $item->name }}</h5>
+                                    <p class="text-xs"> {{ \Carbon\Carbon::parse($item->date)->format('F j') }}</p>
+                                    <p class="text-xs">
+                                        {{ $item->leading }}
+                                    </p>
                                 </a>
                             </article>
                         </li>
@@ -115,6 +119,10 @@
                                     <x-media-image :model="$item" conversion="preview"
                                         class="aspect-video w-full object-cover rounded-md" />
                                     <h5 class="font-semibold text-lg line-clamp-2">{{ $item->name }}</h5>
+                                    <p class="text-xs"> {{ \Carbon\Carbon::parse($item->date)->format('F j') }}</p>
+                                    <p class="text-xs">
+                                        {{ $item->leading }}
+                                    </p>
                                 </a>
                             </article>
                         </li>
