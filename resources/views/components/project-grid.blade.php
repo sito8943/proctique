@@ -1,8 +1,3 @@
-@props([
-    'title' => null,
-    'projects' => collect(),
-])
-
 @if (filled($projects) && count($projects))
     <section class="w-full">
         @if ($title)

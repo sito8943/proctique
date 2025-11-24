@@ -4,16 +4,15 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
 class ProjectGrid extends Component
 {
-
-
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $name, public string $label, public string $id = "", public string $placeholder = "", public string $value = "", public bool $required = false)
+    public function __construct(public Collection $projects, public string $title = '')
     {
     }
 
@@ -22,6 +21,6 @@ class ProjectGrid extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.text-input');
+        return view('components.project-grid');
     }
 }
