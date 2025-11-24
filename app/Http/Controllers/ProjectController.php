@@ -8,7 +8,9 @@ class ProjectController extends Controller
 {
     function index()
     {
-        $projects = Project::with('author', 'tags', 'media')
+        $projects = Project::query()
+            ->select('id', 'author_id', 'leading', 'published_at', 'name')
+            ->with('author:id,name', 'tags', 'media')
             ->where('is_published', true)
             ->paginate(10);
         return view('projects.index', compact('projects'));
@@ -16,10 +18,13 @@ class ProjectController extends Controller
 
     function show(int $projectId)
     {
-        $project = Project::with(['author', 'tags', 'media', 'reviews.author'])
+        $project = Project::query()
+            ->with(['author:id,name', 'tags', 'media', 'reviews.author:id,name'])
             ->findOrFail($projectId);
 
-        $authorProjects = Project::with(['author', 'media'])
+        $authorProjects = Project::query()
+            ->select('id', 'author_id', 'leading', 'published_at', 'name')
+            ->with(['author:id,name', 'media'])
             ->where('author_id', $project->author_id)
             ->where('is_published', true)
             ->where('id', '!=', $project->id)
@@ -31,7 +36,9 @@ class ProjectController extends Controller
         $tag = null;
         if ($project->tags && $project->tags->isNotEmpty()) {
             $tag = $project->tags->first();
-            $tagProjects = Project::with(['author', 'media'])
+            $tagProjects = Project::query()
+                ->select('id', 'author_id', 'leading', 'published_at', 'name')
+                ->with(['author:id,name', 'media'])
                 ->where('id', '!=', $project->id)
                 ->where('is_published', true)
                 ->whereHas('tags', function ($q) use ($tag) {
