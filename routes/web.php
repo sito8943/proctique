@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
