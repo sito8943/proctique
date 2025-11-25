@@ -38,15 +38,7 @@ php artisan migrate --seed
 
 ### Run the app
 
-*Note if you are using Laravel Herd (or something like it) you don't need to run the scripts below*
-
-```bash
-# PHP server (default: http://127.0.0.1:8000)
-php artisan serve
-
-# Optional: run everything together (server, queue, logs, Vite)
-composer dev
-```
+Please be a modern person, use Herd
 
 ## Main Functionality
 - Authentication: user registration, login, email verification.
