@@ -12,7 +12,7 @@ class ProjectGrid extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public Collection $projects, public string $title = '')
+    public function __construct(public Collection $projects, public bool $showAuthors = true, public string $title = '')
     {
     }
 

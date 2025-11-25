@@ -86,7 +86,7 @@
         </section>
 
         @if ($authorProjects->isNotEmpty())
-            <x-project-grid :projects="$authorProjects" :title="'Also from ' . $project->author->name" />
+            <x-project-grid :projects="$authorProjects" :title="'Also from ' . $project->author->name" :showAuthors="false" />
         @endif
 
         @if ($tag && $tagProjects->isNotEmpty())

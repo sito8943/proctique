@@ -11,7 +11,9 @@
                             <x-media-image :model="$project" conversion="preview"
                                 class="aspect-video w-full object-cover rounded-md" />
                             <h5 class="font-semibold text-lg line-clamp-2">{{ $project->name }}</h5>
-                            <p class="text-xs"> {{ \Carbon\Carbon::parse($project->date)->format('F j') }}</p>
+                            @if ($showAuthors)
+                                <x-author :author="$project->author" :date="$project->published_at" />
+                            @endif
                             <p class="text-xs">
                                 {{ $project->leading }}
                             </p>
@@ -22,4 +24,3 @@
         </ul>
     </section>
 @endif
-
