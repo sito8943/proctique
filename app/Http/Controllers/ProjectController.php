@@ -25,7 +25,7 @@ class ProjectController extends Controller
 
         $authorProjects = Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
-            ->with(['author:id,name', 'author.media' , 'reviews', 'media'])
+            ->with(['reviews', 'media'])
             ->where('author_id', $project->author_id)
             ->where('is_published', true)
             ->where('id', '!=', $project->id)
