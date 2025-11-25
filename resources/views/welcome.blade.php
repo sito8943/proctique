@@ -41,7 +41,7 @@
                     {{ $mostRecentProject->leading }}
                 </p>
                 <a href="/projects/{{ $mostRecentProject->id }}"
-                    class="rounded-xl px-4 py-2 bg-red-500 text-white hover:bg-red-400 w-fit">Read</a>
+                    class="rounded-3xl px-5 py-2 bg-red-500 text-white hover:bg-red-400 w-fit">Read</a>
             </div>
         </div>
 
