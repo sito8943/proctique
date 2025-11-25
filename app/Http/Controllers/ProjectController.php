@@ -10,7 +10,7 @@ class ProjectController extends Controller
     {
         $projects = Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
-            ->with('author:id,name', 'tags', 'media')
+            ->with('author:id,name', 'author.media', 'tags', 'media', 'reviews')
             ->where('is_published', true)
             ->paginate(10);
 
@@ -25,7 +25,7 @@ class ProjectController extends Controller
 
         $authorProjects = Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
-            ->with(['author:id,name', 'media'])
+            ->with(['author:id,name', 'author.media' , 'reviews', 'media'])
             ->where('author_id', $project->author_id)
             ->where('is_published', true)
             ->where('id', '!=', $project->id)
@@ -39,7 +39,7 @@ class ProjectController extends Controller
             $tag = $project->tags->first();
             $tagProjects = Project::query()
                 ->select('id', 'author_id', 'leading', 'published_at', 'name')
-                ->with(['author:id,name', 'media'])
+                ->with(['author:id,name', 'author.media' , 'reviews', 'media'])
                 ->where('id', '!=', $project->id)
                 ->where('is_published', true)
                 ->whereHas('tags', function ($q) use ($tag) {

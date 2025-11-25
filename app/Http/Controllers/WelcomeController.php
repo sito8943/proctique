@@ -21,7 +21,7 @@ class WelcomeController extends Controller
 
         $trendingProjects = Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
-            ->with('author:id,name', 'tags', 'media')
+            ->with('author:id,name', 'author.media', 'tags', 'media')
             ->withCount('reviews')
             ->where('is_published', true)
             ->orderByDesc('reviews_count')
