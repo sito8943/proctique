@@ -39,8 +39,8 @@ class ProjectPublishNotification extends Notification
         return (new MailMessage)
             ->subject('A new Project has been publish!')
             ->greeting('Hi!')
-            ->line('<strong>'.$this->project->name.'</strong> has been publish by <a href="http://authors/'.$this->publisher->id.'>'.$this->publisher->name.'</a>!')
-            ->action("It's reading time!", url('http://projects/'.$this->project->id.''))
+            ->line('<strong>' . $this->project->name . '</strong> has been publish by ' . $this->publisher->name . '!')
+            ->action("It's reading time!", url('http://projects/' . $this->project->id . ''))
             ->line('Thanks to be part of the Proctique Community!');
     }
 
