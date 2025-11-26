@@ -30,9 +30,8 @@ class AdminTagController extends Controller
         return redirect('/admin/tags');
     }
 
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        $tag = Tag::find($id);
         return view('admin.tags.edit', compact(['tag']));
     }
 
