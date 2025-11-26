@@ -9,14 +9,14 @@ use App\Models\User;
 
 class Author extends Component
 {
-    
+
 
     /**
      * Create a new component instance.
      */
-    public function __construct(public User $author, public string $date, public bool $showLabel = true)
+    public function __construct(public User $author, public string $date = '', public bool $showLabel = true)
     {
-        
+
     }
 
     /**

@@ -9,6 +9,8 @@
                 {{ $author->name }}
             </span>
         </p>
-        <p class="text-xs"> {{ \Carbon\Carbon::parse($date)->format('F j') }}</p>
+        @if (strlen($date) > 0)
+            <p class="text-xs"> {{ \Carbon\Carbon::parse($date)->format('F j') }}</p>
+        @endif
     </div>
 </div>
