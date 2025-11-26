@@ -11,12 +11,12 @@ class AdminProjectToggleIsPublishedController extends Controller
     public function toggleIsPublished(string $id)
     {
         $project = Project::find($id);
-
+        $publishing = $project->published_at === null;
         $project->update([
-            'is_published' => !$project->is_published,
+            'published_at' => $publishing ? now() : null,
         ]);
 
-        if ($project->is_published) {
+        if ($publishing) {
             $admins = User::where('is_admin', true)->get();
             foreach ($admins as $admin) {
                 $admin->notify(new ProjectPublishNotification($project, auth()->user()));

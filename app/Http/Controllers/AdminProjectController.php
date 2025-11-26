@@ -95,10 +95,7 @@ class AdminProjectController extends Controller
             "leading" => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
             'tags' => ['nullable'],
-            "is_published" => ['nullable', 'boolean'],
         ]);
-
-        $validated['is_published'] = $request->boolean('is_published');
 
         $project = Project::find($id);
 
@@ -131,6 +128,13 @@ class AdminProjectController extends Controller
         } else {
             $project->tags()->sync([]);
         }
+
+        // Handle publish toggle using published_at
+        $shouldPublish = $request->boolean('is_published');
+        $currentPublishedAt = $project->published_at;
+        $validated['published_at'] = $shouldPublish
+            ? ($currentPublishedAt ?: now())
+            : null;
 
         $project->update($validated);
 

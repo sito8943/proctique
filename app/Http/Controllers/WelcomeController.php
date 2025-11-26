@@ -12,7 +12,7 @@ class WelcomeController extends Controller
             return Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
             ->with('author:id,name', 'tags', 'media')
-            ->where('is_published', true)
+            ->whereNotNull('published_at')
             ->latest('published_at')
             ->take(4)
             ->get();
@@ -25,7 +25,7 @@ class WelcomeController extends Controller
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
             ->with('author:id,name', 'author.media', 'tags', 'media')
             ->withCount('reviews')
-            ->where('is_published', true)
+            ->whereNotNull('published_at')
             ->orderByDesc('reviews_count')
             ->latest('published_at')
             ->take(6)

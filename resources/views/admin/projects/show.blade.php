@@ -7,7 +7,7 @@
             <p class="mt-3 text-gray-800">{{ $project->leading }}</p>
             <div class="mt-3 text-gray-700 whitespace-pre-line">{{ $project->description }}</div>
             <div class="mt-3 text-sm text-gray-600">
-                <span>Status: {{ $project->is_published ? 'Published' : 'Draft' }}</span>
+                <span>Status: {{ $project->published_at ? 'Published' : 'Draft' }}</span>
                 @if ($project->published_at)
                     <span class="ml-3">Published at: {{ $project->published_at }}</span>
                 @endif

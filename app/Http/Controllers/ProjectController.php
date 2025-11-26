@@ -11,7 +11,7 @@ class ProjectController extends Controller
         $projects = Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
             ->with('author:id,name', 'author.media', 'tags', 'media', 'reviews')
-            ->where('is_published', true)
+            ->whereNotNull('published_at')
             ->paginate(10);
 
         return view('projects.index', compact('projects'));
@@ -27,7 +27,7 @@ class ProjectController extends Controller
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
             ->with(['reviews', 'media'])
             ->where('author_id', $project->author_id)
-            ->where('is_published', true)
+            ->whereNotNull('published_at')
             ->where('id', '!=', $project->id)
             ->latest('published_at')
             ->take(6)
@@ -41,7 +41,7 @@ class ProjectController extends Controller
                 ->select('id', 'author_id', 'leading', 'published_at', 'name')
                 ->with(['author:id,name', 'author.media' , 'reviews', 'media'])
                 ->where('id', '!=', $project->id)
-                ->where('is_published', true)
+                ->whereNotNull('published_at')
                 ->whereHas('tags', function ($q) use ($tag) {
                     $q->where('tags.id', $tag->id);
                 })

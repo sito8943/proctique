@@ -27,7 +27,7 @@
             @endif
 
             <label class="flex items-center gap-2">
-                <input type="checkbox" name="is_published" value="1" @checked(old('is_published', $project->is_published))>
+                <input type="checkbox" name="is_published" value="1" @checked(old('is_published', (bool) $project->published_at))>
                 <span>Published</span>
             </label>
         </div>

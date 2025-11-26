@@ -10,8 +10,8 @@
                 <div class="bg-gray-200 transition rounded-lg h-full p-4 flex flex-col items-start justify-between gap-2">
                     <x-admin.actions class="w-full">
                         <a href="{{ route('admin.project.publish', $project->id) }}" class="hover:text-red-400"
-                            title="@if ($project->is_published) Unpublish @else Publish @endif">
-                            @if ($project->is_published)
+                            title="@if ($project->published_at) Unpublish @else Publish @endif">
+                            @if ($project->published_at)
                                 <x-fas-eye-slash class="w-4 h-4" />
                             @else
                                 <x-fas-eye class="w-4 h-4" />

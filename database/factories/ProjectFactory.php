@@ -21,8 +21,7 @@ class ProjectFactory extends Factory
             'name' => fake()->sentence(5),
             'leading' => fake()->paragraph(4),
             'content' => fake()->paragraph(20),
-            'published_at' => fake()->dateTime(),
-            'is_published' => fake()->boolean(80),
+            'published_at' => fake()->boolean(80) ? fake()->dateTime() : null,
             'author_id' => fake()->numberBetween(1, 9),
         ];
     }
