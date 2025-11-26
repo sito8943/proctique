@@ -64,16 +64,7 @@
                                 <span class="text-sm font-medium">{{ $review->author->name }}</span>
                                 <span class="text-xs text-gray-500">{{ $review->created_at->diffForHumans() }}</span>
                             </div>
-                            <div class="text-yellow-500">
-                                @php $full = (int) $review->stars; @endphp
-                                @for ($i = 1; $i <= 5; $i++)
-                                    @if ($i <= $full)
-                                        ★
-                                    @else
-                                        ☆
-                                    @endif
-                                @endfor
-                            </div>
+                            <x-stars :value="$review->stars" class="text-yellow-600" />
                             @if ($review->comment)
                                 <p class="text-sm mt-1">{{ $review->comment }}</p>
                             @endif

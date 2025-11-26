@@ -21,16 +21,7 @@
                         </form>
                     </x-admin.actions>
                     <div class="flex flex-col items-start justify-start h-full w-full">
-                        <div class="text-yellow-600">
-                            @php $full = (int) $review->stars; @endphp
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= $full)
-                                    ★
-                                @else
-                                    ☆
-                                @endif
-                            @endfor
-                        </div>
+                        <x-stars :value="$review->stars" class="text-yellow-600" />
                         <p class="mt-5 text-sm text-gray-600">by <strong>{{ $review->author->name }}</strong> on
                             <strong>{{ $review->project->name }}</strong>
                         </p>
