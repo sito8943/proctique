@@ -8,18 +8,20 @@ class WelcomeController extends Controller
 {
     function __invoke()
     {
-
-        $recentProjects = Project::query()
+        $recentProjects = cache()->remember('welcome_page_recent_projects', 3600, function () {
+            return Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
             ->with('author:id,name', 'tags', 'media')
             ->where('is_published', true)
             ->latest('published_at')
             ->take(4)
             ->get();
+        });
 
         $mostRecentProject = $recentProjects->shift();
 
-        $trendingProjects = Project::query()
+        $trendingProjects = cache()->remember('welcome_page_trending_projects', 3600, function () {
+            return  Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name')
             ->with('author:id,name', 'author.media', 'tags', 'media')
             ->withCount('reviews')
@@ -28,6 +30,7 @@ class WelcomeController extends Controller
             ->latest('published_at')
             ->take(6)
             ->get();
+        });
 
         return view('welcome', compact('mostRecentProject', 'recentProjects', 'trendingProjects'));
     }
