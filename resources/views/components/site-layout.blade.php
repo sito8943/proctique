@@ -33,7 +33,7 @@
         <main class="flex-1 w-full">
             @if ($showSidebar)
                 <button type="button" id="toggle-sidebar"
-                    class="md:hidden ml-auto rounded-xl px-3 py-1.5 text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50">
+                    class="md:hidden ml-auto rounded-xl px-3 py-1.5 text-sm font-medium text-blue-600 border border-blue-200 hover:bg-blue-50">
                     Filters
                 </button>
             @endif

@@ -11,7 +11,7 @@
 
 <body class="flex flex-col min-h-screen">
     <header
-        class="bg-red-400/70 backdrop-blur-sm rounded-3xl m-auto w-full max-w-[1100px] px-4 py-2 flex items-center justify-between my-4 sticky top-2">
+        class="bg-blue-600/70 backdrop-blur-sm rounded-3xl m-auto w-full max-w-[1100px] px-4 py-2 flex items-center justify-between my-4 sticky top-2">
         <h1 class="text-xl poppins">
             <a href="{{ route('home') }}" class="text-white">
                 Proctique
@@ -21,19 +21,19 @@
             <ul class="flex gap-2 items-center justify-end">
                 <li>
                     <a href="{{ route('home') }}"
-                        class="transition rounded-3xl px-4 py-1 text-white hover:text-red-400 hover:bg-white">
+                        class="transition rounded-3xl px-4 py-1 text-white hover:text-blue-600 hover:bg-white">
                         Home
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.projects.index') }}"
-                        class="transition rounded-3xl px-4 py-1 text-white hover:text-red-400 hover:bg-white">
+                        class="transition rounded-3xl px-4 py-1 text-white hover:text-blue-600 hover:bg-white">
                         Projects
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.tags.index') }}"
-                        class="transition rounded-3xl px-4 py-1 text-white hover:text-red-400 hover:bg-white">
+                        class="transition rounded-3xl px-4 py-1 text-white hover:text-blue-600 hover:bg-white">
                         Tags
                     </a>
                 </li>
@@ -48,7 +48,7 @@
             <div class="flex items-center gap-2 mb-4">
                 @if ($title !== 'Proctique')
                     <button type="button" onclick="history.go(-1)"
-                        class="rounded-full hover:bg-red-400/40 p-2 transition hover:text-white">
+                        class="rounded-full hover:bg-blue-500/20 p-2 transition hover:text-white">
                         <x-fas-chevron-left class="w-4 h-4" />
                     </button>
                 @endif
@@ -62,7 +62,7 @@
             </section>
         </main>
     </div>
-    <footer class="bg-red-400 w-full p-8">
+    <footer class="bg-blue-600 w-full p-8">
         <div>
             <p class="text-3xl text-white">
                 Proctique

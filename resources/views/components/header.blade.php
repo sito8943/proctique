@@ -11,7 +11,7 @@
 
         <!-- Mobile menu button -->
         <button type="button" id="mobile-menu-button"
-            class="md:hidden inline-flex items-center justify-center rounded-xl p-2 text-white/90 hover:text-white hover:bg-red-400/40 focus:outline-none focus:ring-2 focus:ring-white/60"
+            class="md:hidden inline-flex items-center justify-center rounded-xl p-2 text-white/90 hover:text-white hover:bg-blue-500/30 focus:outline-none focus:ring-2 focus:ring-white/60"
             aria-controls="mobile-menu" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <x-fas-bars class="h-6 w-6" />

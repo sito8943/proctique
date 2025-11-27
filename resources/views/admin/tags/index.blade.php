@@ -10,7 +10,7 @@
                         {{ $tag->name }}
                     </h3>
                     <x-admin.actions>
-                        <a href="{{ route('admin.tags.edit', $tag->id) }}" class="hover:text-red-400">
+                        <a href="{{ route('admin.tags.edit', $tag->id) }}" class="hover:text-blue-600">
                             <x-fas-edit class="w-4 h-4" />
                         </a>
                         <form method="POST" action="/admin/tags/{{ $tag->id }}" class="flex">

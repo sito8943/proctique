@@ -5,7 +5,7 @@
         {{ $slot }}
     </div>
     <div>
-        <button type="submit" class="bg-red-400 hover:bg-red-300 transition rounded-3xl px-4 py-2 text-white">
+        <button type="submit" class="bg-blue-600 hover:bg-blue-500 transition rounded-3xl px-4 py-2 text-white">
             @if ($method == 'POST')
                 Create
             @else

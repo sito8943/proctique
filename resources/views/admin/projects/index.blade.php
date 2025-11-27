@@ -9,7 +9,7 @@
             <li class="h-full">
                 <div class="bg-gray-200 transition rounded-lg h-full p-4 flex flex-col items-start justify-between gap-2">
                     <x-admin.actions class="w-full">
-                        <a href="{{ route('admin.project.publish', $project->id) }}" class="hover:text-red-400"
+                        <a href="{{ route('admin.project.publish', $project->id) }}" class="hover:text-blue-600"
                             title="@if ($project->published_at) Unpublish @else Publish @endif">
                             @if ($project->published_at)
                                 <x-fas-eye-slash class="w-4 h-4" />
@@ -17,7 +17,7 @@
                                 <x-fas-eye class="w-4 h-4" />
                             @endif
                         </a>
-                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="hover:text-red-400" title="Edit">
+                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="hover:text-blue-600" title="Edit">
                             <x-fas-edit class="w-4 h-4" />
                         </a>
                         <form method="POST" action="{{ route('admin.projects.destroy', $project->id) }}" class="flex">

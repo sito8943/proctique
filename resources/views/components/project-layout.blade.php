@@ -26,7 +26,7 @@
 
             <div class="flex flex-wrap items-center gap-2 mb-4">
                 <button type="button" onclick="history.go(-1)"
-                    class="rounded-full hover:bg-red-400/40 p-2 transition hover:text-white">
+                    class="rounded-full hover:bg-blue-500/20 p-2 transition hover:text-white">
                     <x-fas-chevron-left class="w-4 h-4" />
                 </button>
                 <h2 class="text-2xl md:text-3xl font-bold">{{ $title }}</h2>

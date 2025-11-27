@@ -41,7 +41,7 @@
 
                         <div>
                             <button type="submit"
-                                class="rounded-3xl px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600">Submit
+                                class="rounded-3xl px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">Submit
                                 review</button>
                         </div>
                     </form>

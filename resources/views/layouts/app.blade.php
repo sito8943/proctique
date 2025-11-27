@@ -46,7 +46,7 @@
                 </h2>
                 @if ($action && $button)
                     <a href="{{ $action }}"
-                        class="rounded-3xl px-4 py-2 bg-red-400 text-white hover:bg-red-300">{{ $button }}</a>
+                        class="rounded-3xl px-4 py-2 bg-blue-600 text-white hover:bg-blue-500">{{ $button }}</a>
                 @endif
             </div>
 

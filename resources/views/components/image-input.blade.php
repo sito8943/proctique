@@ -11,7 +11,7 @@
     <label for="{{ $inputId }}"
         class="relative border-2 border-dashed rounded-lg w-full aspect-video flex items-center justify-center cursor-pointer bg-white/40 hover:bg-white transition group overflow-hidden">
         <div id="{{ $inputId }}_placeholder"
-            class="pointer-events-none flex flex-col items-center justify-center transition absolute inset-0 {{ empty($preview) ? 'text-gray-500 group-hover:text-red-400' : 'opacity-0 group-hover:opacity-100 text-white bg-black/30' }}">
+            class="pointer-events-none flex flex-col items-center justify-center transition absolute inset-0 {{ empty($preview) ? 'text-gray-500 group-hover:text-blue-600' : 'opacity-0 group-hover:opacity-100 text-white bg-black/30' }}">
             <x-fas-plus class="w-8 h-8 mb-2" />
             <span>{{ empty($preview) ? 'Click to upload' : 'Click to change' }}</span>
         </div>
@@ -50,7 +50,7 @@
                     placeholder.classList.remove('hidden');
                     placeholder.classList.add('opacity-0');
                     placeholder.classList.add('text-white', 'bg-black/30', 'group-hover:opacity-100');
-                    placeholder.classList.remove('text-gray-500', 'group-hover:text-red-400');
+                    placeholder.classList.remove('text-gray-500', 'group-hover:text-blue-600');
                     if (span) span.textContent = 'Click to change';
                     clearBtn.classList.remove('hidden');
                     removeField.value = '0';
@@ -58,7 +58,7 @@
                     img.src = '';
                     img.classList.add('hidden');
                     placeholder.classList.remove('opacity-0', 'text-white', 'bg-black/30', 'group-hover:opacity-100');
-                    placeholder.classList.add('text-gray-500', 'group-hover:text-red-400');
+                    placeholder.classList.add('text-gray-500', 'group-hover:text-blue-600');
                     if (span) span.textContent = 'Click to upload';
                     clearBtn.classList.add('hidden');
                 }
@@ -73,7 +73,7 @@
                 img.classList.add('hidden');
                 const span = placeholder.querySelector('span');
                 placeholder.classList.remove('opacity-0', 'text-white', 'bg-black/30', 'group-hover:opacity-100');
-                placeholder.classList.add('text-gray-500', 'group-hover:text-red-400');
+                placeholder.classList.add('text-gray-500', 'group-hover:text-blue-600');
                 if (span) span.textContent = 'Click to upload';
                 clearBtn.classList.add('hidden');
                 // Mark for server-side removal

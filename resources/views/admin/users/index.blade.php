@@ -9,7 +9,7 @@
             <li class="h-full">
                 <div class="bg-gray-200 transition rounded-lg h-full p-4 flex flex-col items-start justify-between gap-2">
                     <x-admin.actions class="w-full">
-                        <a href="{{ route('admin.users.edit', $user->id) }}/edit}}" class="hover:text-red-400" title="Edit">
+                        <a href="{{ route('admin.users.edit', $user->id) }}/edit}}" class="hover:text-blue-600" title="Edit">
                             <x-fas-edit class="w-4 h-4" />
                         </a>
                         <form method="POST" action="/admin/users/{{ $user->id }}" class="flex">
