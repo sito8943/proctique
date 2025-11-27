@@ -7,7 +7,7 @@
         'border-red-400' => $errors->has($name),
         'border-gray-200' => !$errors->has($name),
     ]) id="{{ $id ?: $name }}" name="{{ $name }}" type="text" value="{{ $value }}"
-        @if($required) required @endif placeholder="{{ $placeholder }}" />
+        @if($required) required @endif placeholder="{{ $placeholder }}" @if($disabled) disabled @endif />
     @error($name)
         <p class="text-red-400">{{ $message }}</p>
     @enderror
