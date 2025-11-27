@@ -6,36 +6,7 @@
 
         <!-- Desktop nav -->
         <nav class="hidden md:block">
-            <ul class="flex gap-2 items-center justify-end">
-                <li>
-                    <a href="{{ route('home') }}"
-                        class="transition rounded-3xl px-4 py-1 text-white hover:text-red-400 hover:bg-white"
-                        :active="str_contains(request()->route()->uri, 'home')">Home</a>
-                </li>
-                <li>
-                    <a href="{{ route('projects.index') }}"
-                        class="transition rounded-3xl px-4 py-1 text-white hover:text-red-400 hover:bg-white"
-                        :active="str_contains(request()->route()->uri, 'projects')">Discover
-                        Projects</a>
-                </li>
-                @if (auth()->user() != null)
-                    <li>
-                        <a href="{{ route('admin.profile.edit') }}">
-                            <x-media-image :model="auth()->user()" class="w-8 h-8 bg-gray-50 rounded-full object-cover"
-                                :alt="auth()->user()->name" />
-                        </a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('login') }}"
-                            class="transition rounded-3xl px-4 py-1 text-white hover:text-red-400 hover:bg-white">Login</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('register') }}"
-                            class="transition rounded-3xl px-4 py-1 hover:text-white hover:bg-red-600 text-red-400 bg-white">Register</a>
-                    </li>
-                @endif
-            </ul>
+            <x-public-header-links layout="desktop" />
         </nav>
 
         <!-- Mobile menu button -->
@@ -50,22 +21,7 @@
     <!-- Mobile nav panel -->
     <nav id="mobile-menu"
         class="md:hidden mt-2 bg-white/80 backdrop-blur-sm rounded-2xl shadow border border-white/60 hidden">
-        <ul class="px-3 py-2">
-            <li>
-                <a href="{{ route("home") }}"
-                    class="block w-full rounded-3xl px-4 py-2 text-red-500 hover:bg-red-50">Home</a>
-            </li>
-            <li>
-                <a href="{{ route('projects.index') }}"
-                    class="block w-full rounded-3xl px-4 py-2 text-red-500 hover:bg-red-50">Projects</a>
-            </li>
-            <li class="mt-1 flex gap-2">
-                <a href="{{ route('login') }}"
-                    class="flex-1 text-center rounded-3xl px-4 py-2 text-red-500 border border-red-200 hover:bg-red-50">Login</a>
-                <a href="{{ route('register') }}"
-                    class="flex-1 text-center rounded-3xl px-4 py-2 text-white bg-red-500 hover:bg-red-600">Register</a>
-            </li>
-        </ul>
+        <x-public-header-links layout="mobile" />
     </nav>
 </header>
 <script>
