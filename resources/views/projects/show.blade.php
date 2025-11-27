@@ -14,7 +14,7 @@
 
             @auth
                 @if (auth()->id() !== $project->author_id)
-                    <form method="POST" action="{{ route('projects.reviews.store', $project->id) }}"
+                    <form method="POST" action="{{ route('projects.reviews.store', $project->slug) }}"
                         class="flex flex-col gap-3 border border-slate-200 rounded-lg p-4">
                         @csrf
                         <div>

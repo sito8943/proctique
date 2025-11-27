@@ -12,7 +12,8 @@ use App\Http\Controllers\AdminReviewController;
 Route::get('/', WelcomeController::class)->name('home');
 
 // Projects (public)
-Route::resource('projects', ProjectController::class)->only(['index','show']);
+Route::resource('projects', ProjectController::class)
+    ->only(['index','show']);
 Route::post('projects/{project}/reviews', [ReviewController::class, 'store'])->name('projects.reviews.store');
 
 Route::get('/dashboard', function () {

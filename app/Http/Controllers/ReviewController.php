@@ -27,9 +27,8 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, int $project)
+    public function store(Request $request, Project $project)
     {
-        $project = Project::findOrFail($project);
 
         // Only non-author users can review
         if (auth()->id() === $project->author_id) {
@@ -50,7 +49,7 @@ class ReviewController extends Controller
 
         // after redirect scroll to #reviews section to see alert
         return redirect()->to(
-            route('projects.show', $project->id) . '#reviews'
+            route('projects.show', $project->slug) . '#reviews'
         )->with('status', 'Thanks for your review!');
     }
 

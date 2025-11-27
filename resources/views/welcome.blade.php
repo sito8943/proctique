@@ -36,12 +36,15 @@
                 <h3 class="font-bold text-2xl sm:text-3xl lg:text-4xl">
                     {{ $mostRecentProject->name }}
                 </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-600">
+                    <x-stars :for="$mostRecentProject" with-count />
+                </div>
                 <x-author :date="$mostRecentProject->published_at" :author="$mostRecentProject->author"></x-author>
                 <x-tags :tags="$mostRecentProject->tags"></x-tags>
                 <p class="text-sm sm:text-base">
                     {{ $mostRecentProject->leading }}
                 </p>
-                <a href="{{ route('projects.show', $mostRecentProject->id) }}"
+                <a href="{{ route('projects.show', $mostRecentProject->slug) }}"
                     class="rounded-3xl px-5 py-2 bg-red-500 text-white hover:bg-red-400 w-fit">Read</a>
             </div>
         </div>
