@@ -19,11 +19,17 @@
                         :active="str_contains(request()->route()->uri, 'admin/projects')">
                         {{ __('Projects') }}
                     </x-breeze.nav-link>
+                    <x-breeze.nav-link href="{{ route('admin.reviews.index') }}"
+                        :active="str_contains(request()->route()->uri, 'admin/reviews')">
+                        {{ __('Reviews') }}
+                    </x-breeze.nav-link>
                     @if (auth()->user()->is_admin)
-                        <x-breeze.nav-link href="{{ route('admin.tags.index') }}" :active="str_contains(request()->route()->uri, 'admin/tags')">
+                        <x-breeze.nav-link href="{{ route('admin.tags.index') }}"
+                            :active="str_contains(request()->route()->uri, 'admin/tags')">
                             {{ __('Tags') }}
                         </x-breeze.nav-link>
-                        <x-breeze.nav-link href="{{ route('admin.users.index') }}" :active="str_contains(request()->route()->uri, 'admin/users')">
+                        <x-breeze.nav-link href="{{ route('admin.users.index') }}"
+                            :active="str_contains(request()->route()->uri, 'admin/users')">
                             {{ __('Users') }}
                         </x-breeze.nav-link>
                     @endif

@@ -63,9 +63,4 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Review::class, 'author_id');
     }
-
-    public function reports()
-    {
-        return $this->hasMany(Report::class);
-    }
 }

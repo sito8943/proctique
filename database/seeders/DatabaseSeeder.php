@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use App\Models\Report;
 use App\Models\Review;
 use App\Models\User;
 use App\Models\Tag;
@@ -36,7 +35,6 @@ class DatabaseSeeder extends Seeder
         }
 
 
-        Report::factory(10)->create();
         Review::factory(10)->create();
         $projects = Project::factory(20)->create();
 

@@ -8,7 +8,7 @@ Free project discovery platform for everyone.
 
 ## Overview
 
-Proctique is a Laravel 12 application where people can publish and discover projects. Users can browse projects by tags, view details, leave reviews (stars and comments), and report inappropriate reviews. Authenticated users can manage their own projects, reviews, and reports. Admins have moderation capabilities for tags and platform content.
+Proctique is a Laravel 12 application where people can publish and discover projects. Users can browse projects by tags, view details, and leave reviews (stars and comments). Authenticated users can manage their own projects and reviews. Admins have moderation capabilities for tags and platform content.
 
 ## Getting Started
 
@@ -45,16 +45,15 @@ Please be a modern person, use Herd
 - Project browsing: list projects and view project details.
 - Tags: filter/browse projects by tag; many‑to‑many relation.
 - Reviews: leave star ratings and comments on projects.
-- Reports: report inappropriate reviews for moderation.
-- User area: manage profile, own projects, reviews, and reports.
+- User area: manage profile, own projects, and reviews.
 - Admin area: manage tags and moderate platform content.
 
 ## Data Model (high level)
-- Users: authors of projects, reviews, and reports.
+- Users: authors of projects and reviews.
 - Projects: authored by users, tagged, reviewed by others.
 - Tags: categorize projects (many‑to‑many with projects).
 - Reviews: comment + star rating on projects.
-- Reports: user‑submitted flags on reviews.
+ 
 
 ---
 
