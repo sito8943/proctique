@@ -44,7 +44,7 @@ class Project extends Model implements HasMedia
 
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class)->orderBy('created_at', 'desc');
     }
 
     public function canBeManagedBy(User $user)
