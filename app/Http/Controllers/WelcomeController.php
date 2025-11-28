@@ -11,7 +11,7 @@ class WelcomeController extends Controller
         $recentProjects = cache()->remember('welcome_page_recent_projects', 3600, function () {
             return Project::query()
                 ->select('id', 'author_id', 'leading', 'published_at', 'name', 'slug')
-                ->with('author:id,name', 'tags', 'media', 'reviews:id,project_i,stars')
+                ->with('author:id,name', 'author.media', 'tags', 'media', 'reviews:id,project_id,stars')
                 ->whereNotNull('published_at')
                 ->latest('published_at')
                 ->take(4)
