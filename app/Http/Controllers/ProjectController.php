@@ -3,18 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Tag;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::query()
+        $query = Project::query()
             ->select('id', 'author_id', 'leading', 'published_at', 'name', 'slug')
             ->with('author:id,name', 'author.media', 'tags', 'media', 'reviews')
-            ->whereNotNull('published_at')
-            ->paginate(10);
+            ->whereNotNull('published_at');
 
-        return view('projects.index', compact('projects'));
+        // Optional filter by tag via query string: /projects?tag={id}
+        $tagId = request('tag');
+        $activeTag = null;
+        if (!is_null($tagId) && $tagId !== '') {
+            $query->whereHas('tags', function ($q) use ($tagId) {
+                $q->where('tags.id', (int) $tagId);
+            });
+            $activeTag = Tag::find((int) $tagId);
+        }
+
+        $projects = $query->paginate(10);
+
+        return view('projects.index', compact('projects', 'activeTag'));
     }
 
     public function show(string $project)

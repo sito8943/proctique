@@ -1,9 +1,15 @@
 <x-projects-index-layout title="Discover Projects">
     <div class="w-full border-slate-100 border rounded pl-4 top-16 sticky bg-white">
-        {{ $projects->links() }}
+        {{ $projects->appends(request()->query())->links() }}
     </div>
+    @if (!empty($activeTag))
+        <div class="mt-2 text-sm text-gray-700">
+            Filtering by: <span class="font-medium">{{ $activeTag->name }}</span>
+            <a href="{{ url('/projects') }}" class="ml-2 text-blue-600 hover:underline">Clear filter</a>
+        </div>
+    @endif
     <ul class="grid gap-10 mt-5">
-        @foreach ($projects as $project)
+        @forelse ($projects as $project)
             <li class="h-full">
                 <article
                     class="h-full w-full flex flex-col gap-4 sm:gap-5 border border-slate-100 shadow-sm p-4 sm:p-6 lg:p-8 rounded-lg transition-shadow">
@@ -24,6 +30,16 @@
                     </p>
                 </article>
             </li>
-        @endforeach
+        @empty
+            @if (!empty($activeTag))
+                <li>
+                    <div class="p-4 border border-slate-100 rounded-lg bg-gray-50 text-gray-700">
+                        There are no projects in the tag
+                        <span class="font-medium">{{ $activeTag->name }}</span>.
+                        <a href="{{ url('/projects') }}" class="ml-1 text-blue-600 hover:underline">Clear filter</a>
+                    </div>
+                </li>
+            @endif
+        @endforelse
     </ul>
 </x-projects-index-layout>

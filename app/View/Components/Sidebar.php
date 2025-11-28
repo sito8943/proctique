@@ -16,7 +16,8 @@ class Sidebar extends Component
      */
     public function __construct()
     {
-        $tags = Tag::all();
+        $tags = Tag::query()
+            ->get();
         $this->tags = $tags;
     }
 
