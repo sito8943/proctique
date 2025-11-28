@@ -1,6 +1,6 @@
 <x-app-layout title='All Reviews'>
 
-    <div class="w-full pl-4 top-32 sticky bg-gray-100">
+    <div class="w-full pl-4 top-32 sticky bg-gray-100 z-10">
         {{ $reviews->links() }}
     </div>
 

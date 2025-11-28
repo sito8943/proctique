@@ -1,6 +1,8 @@
 <x-app-layout title='Project Tags' action="/admin/tags/create" button="New Tag">
 
-    {{ $tags->links() }}
+    <div class="w-full pl-4 top-32 sticky bg-gray-100 z-10">
+        {{ $tags->links() }}
+    </div>
 
     <ul class="flex flex-wrap gap-4">
         @foreach ($tags as $tag)
