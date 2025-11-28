@@ -35,9 +35,10 @@ class Stars extends Component
     }
 
     /**
-     * Compute average rating and count when needed.
+     * Compute average rating and count.
      * - If an explicit numeric value is provided, use it.
-     * - Else, compute from provided reviews collection or from model's `reviews` relation.
+     * - Else, compute from provided `reviews` or from `$for->reviews` if present.
+     * Works with arrays, iterables, or Eloquent collections without requiring specific model methods.
      *
      * @return array{0:int,1:int}
      */
@@ -50,12 +51,10 @@ class Stars extends Component
             return [max(0, min((int) $rounded, $this->max)), 0];
         }
 
-        // Collect reviews either from prop or from a model's relation
+        // Source reviews from prop or `$for->reviews` if available
         $reviews = $this->reviews;
-        if ($reviews === null && $this->for && method_exists($this->for, 'getRelation') && $this->for->relationLoaded('reviews')) {
-            $reviews = $this->for->reviews;
-        } elseif ($reviews === null && $this->for && property_exists($this->for, 'reviews')) {
-            // Attempt to access lazily if available
+        if ($reviews === null && $this->for && isset($this->for->reviews)) {
+            // Avoid triggering extra queries; just read the property if present
             try {
                 $reviews = $this->for->reviews;
             } catch (\Throwable) {
@@ -63,11 +62,25 @@ class Stars extends Component
             }
         }
 
+        $sum = 0.0;
         $count = 0;
         $avg = 0.0;
-        if ($reviews && method_exists($reviews, 'avg')) {
-            $avg = (float) ($reviews->avg('stars') ?? 0);
-            $count = (int) ($reviews->count() ?? 0);
+        if (is_iterable($reviews)) {
+            foreach ($reviews as $r) {
+                $stars = null;
+                if (is_array($r)) {
+                    $stars = $r['stars'] ?? null;
+                } elseif (is_object($r)) {
+                    $stars = $r->stars ?? null;
+                }
+                if (is_numeric($stars)) {
+                    $sum += (float) $stars;
+                    $count++;
+                }
+            }
+            if ($count > 0) {
+                $avg = $sum / $count;
+            }
         }
 
         $rounded = $this->round > 0 ? round($avg, $this->round) : round($avg);
