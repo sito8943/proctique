@@ -14,7 +14,7 @@ Route::get('/', WelcomeController::class)->name('home');
 // Projects (public)
 Route::resource('projects', ProjectController::class)
     ->only(['index','show']);
-Route::post('projects/{project}/reviews', [ReviewController::class, 'store'])->name('projects.reviews.store');
+Route::post('projects/{project:slug}/reviews', [ReviewController::class, 'store'])->name('projects.reviews.store');
 
 Route::get('dashboard', function () {
     return view('userzone.dashboard');
