@@ -10,7 +10,7 @@
         </p>
 
         <section class="w-full flex flex-col gap-6">
-            <h4 class="text-xl font-semibold">Reviews</h4>
+            <h4 class="text-xl font-semibold" id="reviews">Reviews</h4>
 
             @auth
                 @if (auth()->id() !== $project->author_id)
@@ -54,7 +54,7 @@
                 </div>
             @endif
 
-            <ul class="flex flex-col gap-4" id="reviews">
+            <ul class="flex flex-col gap-4">
                 @forelse ($project->reviews as $review)
                     <li class="border border-slate-100 rounded-lg p-4 flex gap-4">
                         <x-media-image :model="$review->author" class="w-10 h-10 rounded-full object-cover bg-gray-300"
