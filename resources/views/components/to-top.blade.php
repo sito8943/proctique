@@ -15,6 +15,32 @@
         const btn = container.querySelector('button');
         if (!btn) return;
 
+        // Adjust position to avoid overlapping the footer when it's visible
+        const footer = document.getElementById('site-footer');
+        let footerVisible = false;
+
+        const setBottomOffset = () => {
+            if (!footerVisible || !footer) {
+                container.style.bottom = '';
+                return;
+            }
+            const h = footer.getBoundingClientRect().height || 0;
+            const margin = 16; // 1rem
+            container.style.bottom = (h + margin) + 'px';
+        };
+
+        if (footer && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    footerVisible = entry.isIntersecting;
+                    setBottomOffset();
+                });
+            }, { root: null, threshold: 0 });
+            observer.observe(footer);
+
+            window.addEventListener('resize', setBottomOffset, { passive: true });
+        }
+
         const toggle = () => {
             if (window.scrollY > 200) {
                 btn.classList.remove('scale-0');
