@@ -1,5 +1,11 @@
 <x-app-layout title='Project with Id {{ $project->id }}''>
     <div class="space-y-4">
+        @if (!$project->published_at)
+            <div class="rounded-lg border-2 border-dashed border-amber-300 bg-amber-50 text-amber-900 px-4 py-3">
+                <strong class="mr-1">Unpublished:</strong>
+                This project is currently not visible publicly.
+            </div>
+        @endif
         <div class="bg-white rounded-lg p-4 shadow">
             <h2 class="text-2xl font-semibold mb-2">{{ $project->name }}</h2>
             <p class="text-sm text-gray-600">by {{ $project->author->name }}</p>

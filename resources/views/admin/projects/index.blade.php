@@ -7,7 +7,8 @@
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($projects as $project)
             <li class="h-full">
-                <div class="bg-gray-200 transition rounded-lg h-full p-4 flex flex-col items-start justify-between gap-2">
+                <div class="transition rounded-lg h-full p-4 flex flex-col items-start justify-between gap-2
+                    {{ $project->published_at ? 'bg-gray-200' : 'bg-amber-50 border-2 border-dashed border-amber-300' }}">
                     <x-admin.actions class="w-full">
                         <a href="{{ route('admin.project.publish', $project->id) }}" class="hover:text-blue-600"
                             title="@if ($project->published_at) Unpublish @else Publish @endif">
@@ -29,8 +30,13 @@
                         </form>
                     </x-admin.actions>
                     <div class="flex flex-col items-start justify-start h-full w-full">
-                        <x-media-image :model="$project" conversion="website"
-                            class="aspect-video w-full object-cover rounded-lg my-2" />
+                        <div class="relative w-full my-2">
+                            <x-media-image :model="$project" conversion="website"
+                                class="aspect-video w-full object-cover rounded-lg" />
+                            @if (!$project->published_at)
+                                <span class="absolute top-2 left-2 text-xs px-2 py-1 rounded bg-amber-500 text-white shadow">Unpublished</span>
+                            @endif
+                        </div>
                         <h3 class="font-bold text-lg">{{ $project->name }}</h3>
                         <p class="text-sm text-gray-600">by {{ $project->author->name }}</p>
 

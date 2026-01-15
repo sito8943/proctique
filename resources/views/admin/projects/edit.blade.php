@@ -1,4 +1,10 @@
 <x-app-layout title='Edit project with Id: {{ $project->id }}'>
+    @if (!$project->published_at)
+        <div class="mb-4 rounded-lg border-2 border-dashed border-amber-300 bg-amber-50 text-amber-900 px-4 py-3">
+            <strong class="mr-1">Unpublished:</strong>
+            This project is currently not visible publicly.
+        </div>
+    @endif
     <x-form method="PUT" action="/admin/projects/{{ $project->id }}" enctype="multipart/form-data"
         contentClass="flex flex-col md:flex-row gap-6 md:gap-10">
         <div class="flex flex-col gap-6 md:gap-10 w-full md:w-1/2">
