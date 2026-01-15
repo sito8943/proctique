@@ -68,8 +68,17 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        // Update email to free up the original, avoiding unique constraint
+        $suffix = '__deleted__' . $user->id;
+        // email column is 255 by default; ensure we don't exceed it
+        $maxLen = 255;
+        $base = substr($user->email, 0, max(0, $maxLen - strlen($suffix)));
+        $user->email = $base . $suffix;
+        $user->save();
+
         Auth::logout();
 
+        // Soft delete the user (SoftDeletes on User model)
         $user->delete();
 
         $request->session()->invalidate();
