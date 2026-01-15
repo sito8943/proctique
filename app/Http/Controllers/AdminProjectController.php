@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AdminProjectController extends Controller
 {
@@ -67,6 +68,8 @@ class AdminProjectController extends Controller
         } else {
             $project->tags()->sync([]);
         }
+
+        $this->flushWelcomeCaches();
 
         return redirect('/admin/projects');
     }
@@ -140,6 +143,8 @@ class AdminProjectController extends Controller
 
         $project->update($validated);
 
+        $this->flushWelcomeCaches();
+
         return redirect('/admin/projects');
     }
 
@@ -153,6 +158,14 @@ class AdminProjectController extends Controller
         }
         $project->delete();
 
+        $this->flushWelcomeCaches();
+
         return redirect('/admin/projects');
+    }
+
+    private function flushWelcomeCaches(): void
+    {
+        Cache::forget('welcome_page_recent_projects');
+        Cache::forget('welcome_page_trending_projects');
     }
 }
