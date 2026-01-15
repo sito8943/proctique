@@ -31,15 +31,28 @@
                 </article>
             </li>
         @empty
-            @if (!empty($activeTag))
-                <li>
-                    <div class="p-4 border border-slate-100 rounded-lg bg-gray-50 text-gray-700">
-                        There are no projects in the tag
-                        <span class="font-medium">{{ $activeTag->name }}</span>.
-                        <a href="{{ url('/projects') }}" class="ml-1 text-blue-600 hover:underline">Clear filter</a>
-                    </div>
-                </li>
-            @endif
+            <li>
+                <div
+                    class="p-6 sm:p-8 border border-slate-100 rounded-lg bg-gray-50 text-gray-700 flex flex-col gap-2 sm:gap-3 items-start">
+                    @if (!empty($activeTag))
+                        <h3 class="text-lg font-semibold">No projects found for this tag</h3>
+                        <p>
+                            Try another tag or clear the filter for all projects.
+                        </p>
+                        <a href="{{ url('/projects') }}"
+                            class="inline-block mt-1 rounded-2xl border border-blue-200 text-blue-600 px-4 py-2 hover:bg-blue-50">Clear
+                            filter</a>
+                    @else
+                        <h3 class="text-lg font-semibold">No projects yet</h3>
+                        <p>
+                            Be the first to share a project with the community.
+                        </p>
+                        <a href="{{ route(auth()->user() ? 'admin.projects.create' : 'register') }}"
+                            class="inline-block mt-1 rounded-2xl border border-blue-200 text-blue-600 px-4 py-2 hover:bg-blue-50">Create
+                            a project</a>
+                    @endif
+                </div>
+            </li>
         @endforelse
     </ul>
 </x-projects-index-layout>
