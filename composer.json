@@ -12,6 +12,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "owenvoke/blade-fontawesome": "^3.0",
         "spatie/laravel-backup": "^9.3",
+        "spatie/laravel-flare": "^2.2",
         "spatie/laravel-medialibrary": "^11.17"
     },
     "require-dev": {
