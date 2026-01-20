@@ -36,6 +36,8 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+For all available environment keys, see docs/environment-keys.md.
+
 ### Run the app
 
 Please be a modern person, use Herd
