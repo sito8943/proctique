@@ -37,7 +37,7 @@ class ProjectController extends Controller
             ->firstOrFail();
 
         $authorProjects = Project::query()
-            ->select('id', 'author_id', 'leading', 'published_at', 'name', 'slug', 'reviews:stars')
+            ->select('id', 'author_id', 'leading', 'published_at', 'name', 'slug')
             ->with(['reviews', 'media', 'author.media'])
             ->where('author_id', $project->author_id)
             ->whereNotNull('published_at')
@@ -51,7 +51,7 @@ class ProjectController extends Controller
         if ($project->tags && $project->tags->isNotEmpty()) {
             $tag = $project->tags->first();
             $tagProjects = Project::query()
-                ->select('id', 'author_id', 'leading', 'published_at', 'name', 'slug', 'reviews:stars')
+                ->select('id', 'author_id', 'leading', 'published_at', 'name', 'slug')
                 ->with(['author:id,name', 'author.media', 'reviews', 'media'])
                 ->where('id', '!=', $project->id)
                 ->whereNotNull('published_at')
