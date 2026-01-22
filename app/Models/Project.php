@@ -87,4 +87,20 @@ class Project extends Model implements HasMedia
             }
         });
     }
+
+    /**
+     * Marks the project as deleted while freeing the unique slug.
+     */
+    public function markAsDeleted(): void
+    {
+        $suffix = '__deleted__' . $this->id;
+        $maxLen = 255; // default string length
+        $currentSlug = $this->slug ?? Str::slug((string) $this->name);
+        $base = substr($currentSlug, 0, max(0, $maxLen - strlen($suffix)));
+        $this->slug = $base . $suffix;
+        $this->save();
+
+        // Soft delete the record
+        $this->delete();
+    }
 }

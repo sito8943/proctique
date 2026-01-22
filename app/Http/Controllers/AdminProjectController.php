@@ -156,7 +156,8 @@ class AdminProjectController extends Controller
         if (!$project->canBeManagedBy($authUser)) {
             abort(403);
         }
-        $project->delete();
+        // Free slug uniqueness then soft-delete
+        $project->markAsDeleted();
 
         $this->flushWelcomeCaches();
 
