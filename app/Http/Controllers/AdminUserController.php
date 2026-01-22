@@ -92,7 +92,8 @@ class AdminUserController extends Controller
     public function destroy(int $id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
+        // Use common deletion logic to free email and soft-delete
+        $user->markAsDeleted();
 
         return redirect('/admin/users');
     }

@@ -63,4 +63,22 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Review::class, 'author_id');
     }
+
+    /**
+     * Marks the user as deleted by updating the email to a unique
+     * placeholder (to free the original for reuse) and soft-deleting
+     * the user record.
+     */
+    public function markAsDeleted(): void
+    {
+        // Ensure unique email after deletion to avoid unique index conflicts
+        $suffix = '__deleted__' . $this->id;
+        $maxLen = 255; // default email column length
+        $base = substr($this->email ?? '', 0, max(0, $maxLen - strlen($suffix)));
+        $this->email = $base . $suffix;
+        $this->save();
+
+        // Soft delete the user
+        $this->delete();
+    }
 }
