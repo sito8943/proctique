@@ -38,7 +38,7 @@ class AdminProjectController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'],
-            "header_image" => ['nullable', 'image'],
+            "header_image" => ['nullable', 'image', "max:2048"],
             "leading" => ['nullable', 'string'],
             'tags' => ['nullable'],
             'content' => ['nullable', 'string']
@@ -94,7 +94,7 @@ class AdminProjectController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'],
-            "header_image" => ['nullable', 'image'],
+            "header_image" => ['nullable', 'image', "max:2048"],
             "leading" => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
             'tags' => ['nullable'],
