@@ -32,9 +32,9 @@
         </h2>
 
         @if (!empty($mostRecentProject))
-            <div class="flex flex-col md:flex-row gap-6 md:gap-10 border border-slate-100 shadow-sm p-4 rounded-lg">
+            <div class="flex flex-col lg:flex-row gap-6 md:gap-10 border border-slate-100 shadow-sm p-4 rounded-lg">
                 <x-media-image :model="$mostRecentProject" conversion="website"
-                    class="aspect-video w-full object-cover rounded-lg" />
+                    class="aspect-video lg:w-full w-5/6 object-cover rounded-lg" />
                 <div class="flex flex-col gap-4">
                     <h3 class="font-bold text-2xl sm:text-3xl lg:text-4xl">
                         {{ $mostRecentProject->name }}
@@ -63,7 +63,8 @@
                     <a href="{{ route('register') }}"
                         class="rounded-3xl bg-blue-600 text-white px-6 py-3 hover:bg-blue-500">Create an account</a>
                     <a href="{{ route('projects.index') }}"
-                        class="rounded-3xl border border-blue-200 text-blue-600 px-6 py-3 hover:bg-blue-50">Browse projects</a>
+                        class="rounded-3xl border border-blue-200 text-blue-600 px-6 py-3 hover:bg-blue-50">Browse
+                        projects</a>
                 </div>
             </div>
         @endif
