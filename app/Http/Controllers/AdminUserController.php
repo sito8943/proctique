@@ -25,7 +25,7 @@ class AdminUserController extends Controller
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
-            "avatar" => ['nullable', 'image'],
+            "avatar" => ['nullable', 'image', 'max:' . config('uploads.max_image_kb', 2048)],
             'is_admin' => ['nullable', 'boolean'],
         ]);
 
@@ -54,7 +54,7 @@ class AdminUserController extends Controller
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $id],
             'password' => ['nullable', 'string', 'min:8'],
-            "avatar" => ['nullable', 'image'],
+            "avatar" => ['nullable', 'image', 'max:' . config('uploads.max_image_kb', 2048)],
             'is_admin' => ['nullable', 'boolean'],
         ]);
 

@@ -38,7 +38,7 @@ class ProfileController extends Controller
 
         // Validate and handle avatar upload/removal
         $request->validate([
-            'avatar' => ['nullable', 'image'],
+            'avatar' => ['nullable', 'image', 'max:' . config('uploads.max_image_kb', 2048)],
             'avatar_remove' => ['nullable', 'boolean'],
         ]);
 

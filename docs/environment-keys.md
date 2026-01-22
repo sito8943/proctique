@@ -120,4 +120,8 @@ These keys are not in `.env.example` but are used by the project or packages. On
 -   IMAGE_DRIVER: Image manipulation driver (`gd` or `imagick`).
 -   DEBUGBAR_ENABLED: Enable Laravel Debugbar in local. Do not enable in production.
 
+## UI Limits
+
+-   MAX_IMAGE_UPLOAD_KB: Maximum image upload size (in kilobytes) enforced by the image input UI. Default `2048`. How to get: choose a limit appropriate for your app and environment.
+
 For additional advanced options (extra Redis, SQS, Papertrail, granular Debugbar, etc.), check the corresponding `config/*.php` files where all `env()` keys are defined.
