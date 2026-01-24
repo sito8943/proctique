@@ -20,7 +20,7 @@ Route::get('dashboard', function () {
     return view('userzone.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
+Route::name('admin.')->prefix(prefix: 'admin')->middleware('auth')->group(function () {
     Route::resource('projects', AdminProjectController::class)->except(['show']);
     Route::resource('tags', AdminTagController::class)->except(['show'])->middleware('is_admin');
     Route::resource('users', AdminUserController::class)->except(['show'])->middleware('is_admin');

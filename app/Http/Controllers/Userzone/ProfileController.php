@@ -54,7 +54,7 @@ class ProfileController extends Controller
             $user->addMediaFromRequest('avatar')->toMediaCollection();
         }
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
     }
 
     /**
