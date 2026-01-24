@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -80,5 +82,27 @@ class User extends Authenticatable implements HasMedia
 
         // Soft delete the user
         $this->delete();
+    }
+
+    public function getImageUrl(string $conversion = 'preview'): string
+    {
+        if ($this->media->first()) {
+            return $this->media->first()->getUrl($conversion);
+        } else {
+            return asset('img/placeholder.png');
+        }
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Fit::Crop, 50, 50)
+            ->nonQueued();
+
+        $this
+            ->addMediaConversion('website')
+            ->fit(Fit::Crop, 200, 200)
+            ->nonQueued();
     }
 }

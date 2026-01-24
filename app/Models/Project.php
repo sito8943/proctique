@@ -103,4 +103,26 @@ class Project extends Model implements HasMedia
         // Soft delete the record
         $this->delete();
     }
+
+    public function getImageUrl(string $conversion = 'preview'): string
+    {
+        if ($this->media->first()) {
+            return $this->media->first()->getUrl($conversion);
+        } else {
+            return asset('img/placeholder.png');
+        }
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Fit::Crop, 320, 200)
+            ->nonQueued();
+
+        $this
+            ->addMediaConversion('website')
+            ->fit(Fit::Crop, 640, 400)
+            ->nonQueued();
+    }
 }
