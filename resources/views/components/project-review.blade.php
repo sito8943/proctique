@@ -23,7 +23,7 @@ new class extends Component {
 };
 ?>
 
-<ul class="flex flex-col gap-4">
+<ul class="grid lg:grid-cols-4 sm:grid-cols-2 gap-4">
     @forelse ($project->reviews as $review)
         <li class="border border-slate-100 rounded-lg p-4 flex gap-4">
             <x-media-image :model="$review->author" class="w-10 h-10 rounded-full object-cover bg-gray-300"
