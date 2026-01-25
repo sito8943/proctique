@@ -37,7 +37,7 @@ class ReviewController extends Controller
 
         $validated = $request->validate([
             'stars' => ['required', 'integer', 'min:1', 'max:5'],
-            'comment' => ['nullable', 'string', 'max:2000'],
+            'comment' => ['nullable', 'string', 'max:255'],
         ]);
 
         Review::create([
