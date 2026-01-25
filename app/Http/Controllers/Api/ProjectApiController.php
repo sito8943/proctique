@@ -27,6 +27,7 @@ class ProjectApiController extends Controller
         $project = Project::query()
             ->select(['id', 'name', 'author_id', 'leading', 'content'])
             //TODO CHECK THIS WITH NICO
+            //only works with reviews, not with reviews:id,comment,stars,created_at
             ->with('author:id,name', 'tags:id,name,color', 'reviews')
             ->find($id);
 

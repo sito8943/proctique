@@ -29,7 +29,8 @@ class ReviewController extends Controller
      */
     public function store(Request $request, Project $project)
     {
-
+        //TODO CHECK THIS WITH NICO
+        //What would happen with this if we are using livewire
         // Only non-author users can review
         if (auth()->id() === $project->author_id) {
             abort(403, 'Authors cannot review their own projects.');

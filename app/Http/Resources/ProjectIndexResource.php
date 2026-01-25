@@ -23,6 +23,7 @@ class ProjectIndexResource extends JsonResource
             'image_url' => $this->getImageUrl('preview'),
             'link' => route('api.projects.show', ['id' => $this->id]),/*
             //TODO CHECK THIS WITH NICO
+            //Is asking for a parameters 'project'
             'promo_url' => route('projects.show', $this->slug), */
         ];
     }
