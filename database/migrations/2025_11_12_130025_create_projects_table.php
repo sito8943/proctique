@@ -14,8 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-
-            $table->text('leading')->nullable();
+            $table->string('leading', 255)->nullable();
             $table->text('content')->nullable();
             $table->foreignId('author_id');
             $table->boolean("is_published")->default(false);
