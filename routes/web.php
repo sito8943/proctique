@@ -8,12 +8,16 @@ use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminProjectToggleIsPublishedController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminReviewController;
+use App\Http\Controllers\ProjectSponsorController;
 
 Route::get('/', WelcomeController::class)->name('home');
 
 // Projects (public)
 Route::resource('projects', ProjectController::class)
-    ->only(['index','show']);
+    ->only(['index', 'show']);
+Route::get('projects/{project}/sponsor/', [ProjectSponsorController::class, 'preparePayment'])
+    ->middleware('auth')
+    ->name('projects.sponsor');
 
 Route::get('dashboard', function () {
     return view('userzone.dashboard');

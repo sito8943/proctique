@@ -9,6 +9,23 @@
             {{ $project->content }}
         </p>
 
+        <div>
+            <form action="{{route('projects.sponsor', ['project' => $project])}}" class="flex gap-2">
+
+                <x-breeze.text-input type="text" name="amount" value="5" placeholder="Amount (euro)" />
+
+                <button type="submit"
+                    class="rounded-3xl px-10 py-2 bg-blue-600 text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 flex items-center justify-center transition">Sponsor</button>
+
+            </form>
+
+            @if(request()->has('sponsored') && request()->sponsored == 'true')
+                <div class="mt-4 p-4 bg-yellow-100 border border-yellow-300">
+                    Thank you for sponsoring this article! Your support helps us create more great content.
+                </div>
+            @endif
+        </div>
+
         <section class="w-full flex flex-col gap-6">
             <h4 class="text-xl font-semibold" id="reviews">Reviews</h4>
 
