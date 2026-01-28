@@ -10,11 +10,21 @@ use App\Models\Review;
 new class extends Component {
     public Project $project;
     public string $comment = '';
-    public int $stars = 5;
+    public ?int $stars = 5;
     public bool $successful = false;
 
     public function addComment()
     {
+        // Authorization: must be authenticated
+        if (! auth()->check()) {
+            abort(403, 'Authentication required.');
+        }
+
+        // Authorization: authors cannot review their own projects
+        if (auth()->id() === $this->project->author_id) {
+            abort(403, 'Authors cannot review their own projects.');
+        }
+
         $this->validate([
             'stars' => ['required', 'integer', 'min:1', 'max:5'],
             'comment' => ['nullable', 'string', 'max:255'],
@@ -24,7 +34,7 @@ new class extends Component {
             'author_id' => auth()->id(),
             'project_id' => $this->project->id,
             'stars' => $this->stars,
-            'comment' => $this->comment ?? null,
+            'comment' => $this->comment !== '' ? $this->comment : null,
         ]);
 
         $this->comment = '';
@@ -42,7 +52,7 @@ new class extends Component {
             <form wire:submit="addComment()" class="flex flex-col gap-3 border border-slate-200 rounded-lg p-4">
                 <div>
                     <label for="stars" class="block text-sm font-medium">Rating</label>
-                    <select id="stars" name="stars" class="mt-1 block w-24 rounded border border-gray-300 p-1 text-sm">
+                    <select id="stars" name="stars" wire:model.defer="stars" class="mt-1 block w-24 rounded border border-gray-300 p-1 text-sm">
                         @for ($i = 5; $i >= 1; $i--)
                             <option value="{{ $i }}">{{ $i }} {{ Str::plural('star', $i) }}</option>
                         @endfor
