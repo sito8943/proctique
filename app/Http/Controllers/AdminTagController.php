@@ -42,7 +42,7 @@ class AdminTagController extends Controller
             'color' => []
         ]);
 
-        $tag = Tag::find($id);
+        $tag = Tag::findOrFail($id);
 
         $tag->update($validated);
 
@@ -51,7 +51,7 @@ class AdminTagController extends Controller
 
     public function destroy($id)
     {
-        $tag = Tag::find($id);
+        $tag = Tag::findOrFail($id);
         $tag->delete();
 
         return redirect('/admin/tags');

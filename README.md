@@ -1,3 +1,5 @@
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F3e08b2d7-769f-4ab7-8afc-8ab254eec848&style=plastic)](https://forge.laravel.com/sito/proctique-forge/2998212)
+
 <div align="center">
 
 # Proctique
