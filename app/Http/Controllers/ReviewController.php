@@ -25,36 +25,6 @@ class ReviewController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request, Project $project)
-    {
-        //TODO CHECK THIS WITH NICO
-        //What would happen with this if we are using livewire
-        // Only non-author users can review
-        if (auth()->id() === $project->author_id) {
-            abort(403, 'Authors cannot review their own projects.');
-        }
-
-        $validated = $request->validate([
-            'stars' => ['required', 'integer', 'min:1', 'max:5'],
-            'comment' => ['nullable', 'string', 'max:255'],
-        ]);
-
-        Review::create([
-            'author_id' => auth()->id(),
-            'project_id' => $project->id,
-            'stars' => $validated['stars'],
-            'comment' => $validated['comment'] ?? null,
-        ]);
-
-        // after redirect scroll to #reviews section to see alert
-        return redirect()->to(
-            route('projects.show', $project->slug) . '#reviews'
-        )->with('status', 'Thanks for your review!');
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(string $id)
