@@ -3,7 +3,10 @@
 use App\Http\Controllers\Api\AuthorApiController;
 use App\Http\Controllers\Api\ProjectApiController;
 use App\Http\Controllers\Api\TagApiController;
+use App\Http\Controllers\Api\MollieWebhookController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('mollie/webhook', MollieWebhookController::class)->name('api.mollie.webhook');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('projects', [ProjectApiController::class, 'index'])->name('api.projects.index');
