@@ -28,7 +28,7 @@ class ProjectSponsorController extends Controller
         $request = new CreatePaymentRequest(
             description: 'Sponsoring project: ' . $project->title . ' by ' . $project->author->name,
             amount: new Money('EUR', number_format($amount_cents/100, 2, '.', '')),
-            redirectUrl: route('projects.show', ['project' => $project->id, 'purchase' => $purchase->id]),
+            redirectUrl: route('projects.show', ['project' => $project->slug, 'purchase' => $purchase->id]),
             webhookUrl: $webhook_url,
             metadata: [
                 "order_id" => "# $purchase->id",
